@@ -15,6 +15,9 @@ public class Main2TrangchuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2_trangchu);
         button2=(Button)findViewById(R.id.button2);
         button1=(Button)findViewById(R.id.button1);
+        button3=(Button)findViewById(R.id.button3);
+        button4=(Button)findViewById(R.id.button4);
+        button5=(Button)findViewById(R.id.button5);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +29,27 @@ public class Main2TrangchuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(Main2TrangchuActivity.this,Main3MyrankActivity.class);
+                startActivity(i);
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Main2TrangchuActivity.this,Main8OptionsActivity.class);
+                startActivity(i);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Main2TrangchuActivity.this,Main9How2playActivity.class);
+                startActivity(i);
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Main2TrangchuActivity.this,Main10AboutusActivity.class);
                 startActivity(i);
             }
         });

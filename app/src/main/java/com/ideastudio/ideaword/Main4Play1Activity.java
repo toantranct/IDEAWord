@@ -35,7 +35,7 @@ public class Main4Play1Activity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main4Play1Activity.this,Main3MyrankActivity.class);
+                Intent i =new Intent(Main4Play1Activity.this,Main2TrangchuActivity.class);
                 startActivity(i);
             }
         });

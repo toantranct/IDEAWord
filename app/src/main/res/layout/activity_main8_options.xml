@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Main8OptionsActivity">
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button8_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"

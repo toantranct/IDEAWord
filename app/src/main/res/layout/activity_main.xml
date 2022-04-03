@@ -37,21 +37,22 @@
         android:textColor="#0A0B0A"
         android:textSize="25dp"
         android:layout_marginTop = "106dp"/>
+
     <EditText
         android:id="@+id/editText1"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:hint="Nhập tên của bạn"
-        android:textColorHint = "#494649"
-        android:textColorHighlight = "#ff7eff15"
-        android:focusable = "true"
-        android:textColor="#736C73"
-        android:textSize="25dp"
+        android:layout_marginTop="146dp"
         android:background="@color/cardview_light_background"
-        android:layout_marginTop = "146dp"
-        android:paddingLeft="30dp" />
+        android:focusable="true"
+        android:hint="Nhập tên của bạn"
+        android:paddingLeft="30dp"
+        android:textColor="#736C73"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#494649"
+        android:textSize="25dp" />
 
 
     <Button

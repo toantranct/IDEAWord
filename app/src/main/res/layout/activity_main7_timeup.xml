@@ -80,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button7_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -92,12 +92,13 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="78dp"
-        android:layout_height="67dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home"
+        android:src="@drawable/ic_baseline_home_24"
+        android:background="@drawable/ic_baseline_home_24"
         tools:ignore="MissingConstraints" />
 
     <ImageView
