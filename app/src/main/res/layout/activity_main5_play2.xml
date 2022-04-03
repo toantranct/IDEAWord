@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height = "match_parent"
+    android:orientation="vertical"
+    tools:context = ".MainActivity"
+    android:background="#79D5FA">
+
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imagebutton"
+        android:src="@drawable/ic_baseline_home_24"
+        android:background="@drawable/ic_baseline_home_24"/>
+    <TextView
+        android:id="@+id/textView5_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Vòng "
+        android:textColor="#0A0B0A"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        />
+    <TextView
+        android:id="@+id/textView5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="1"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/textView5_1"
+        />
+
+    <TextView
+        android:id="@+id/textView5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="0:30"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp"
+        android:layout_marginTop = "80dp"/>
+    <TextView
+        android:id="@+id/textView5_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Cậu ấm"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp"
+        android:layout_marginTop = "180dp"/>
+
+    <TextView
+        android:id="@+id/textView5_5"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/textView5_4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_toLeftOf="@id/editText1"
+        android:background="#D3D1D1"
+        android:focusable="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="ấm"
+        android:textColor="#0A0B0A"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#494649"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/textView5_4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/cardview_light_background"
+        android:focusable="true"
+        android:paddingLeft="10dp"
+        android:textColor="#0E0E0E"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#494649"
+        android:textSize="25dp" />
+
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Enter"
+        android:id="@+id/button5_1"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop = "320dp"/>
+</RelativeLayout>

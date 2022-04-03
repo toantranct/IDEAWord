@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    Button button;
+public class Main10AboutusActivity extends AppCompatActivity {
+    Button button1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button=(Button)findViewById(R.id.btntieptuc);
-        button.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_main10_aboutus);
+        button1=(Button)findViewById(R.id.button10_1);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(MainActivity.this,Main2TrangchuActivity.class);
+                Intent i =new Intent(Main10AboutusActivity.this,Main2TrangchuActivity.class);
                 startActivity(i);
             }
         });

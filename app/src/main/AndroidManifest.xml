@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ideastudio.ideaword">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IDEAWord">
+        <activity
+            android:name=".Main10AboutusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main9How2playActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main8OptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main7TimeupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main6UprankActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main5Play2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Main4Play1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Main3MyrankActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main2TrangchuActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
