@@ -39,7 +39,7 @@
         android:layout_marginTop = "106dp"/>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/playerWord"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageView"
