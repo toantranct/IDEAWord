@@ -1,6 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorBG">
+<!--  header  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/imvHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src ="@drawable/ic_home"/>
+        <TextView
+            android:id="@+id/textRound"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Round 1"
+            android:textSize="24dp"
+            android:textColor="@color/colorText"
+            android:gravity="center"
+            />
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1"
+           >
+           <TextView
+               android:id="@+id/textTime"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginTop="10dp"
+               android:text="20s"
+               android:textSize="18dp"
+               android:textColor="@color/colorText"
+               android:gravity="right"
+               />
+           <ImageView
+               android:id="@+id/imvTime"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:src ="@drawable/ic_time"/>
+       </LinearLayout>
+
+    </LinearLayout>
+<!--  Main - maybe Fragment-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/currentWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cậu cả"
+            android:textSize="50dp"
+            android:textColor="@color/colorText"
+            android:gravity="center"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Điền từ nối thích hợp"
+                android:layout_gravity="center"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:prefixTextColor="@color/colorText"
+
+                app:helperText="Điền từ thích hợp để tạo thành từ có nghĩa">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/playerWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/BtnCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kiểm tra"
+            android:layout_gravity="right"
+            android:onClick="BtnCheckClick"/>
+
+          </LinearLayout>
+<!--    End-->
 
 </LinearLayout>
