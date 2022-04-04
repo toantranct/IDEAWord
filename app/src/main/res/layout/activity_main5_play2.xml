@@ -9,11 +9,11 @@
 
 
     <ImageButton
+        android:id="@+id/imagebutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/imagebutton"
-        android:src="@drawable/ic_baseline_home_24"
-        android:background="@drawable/ic_baseline_home_24"/>
+        android:background="@drawable/ic_baseline_home_24"
+        android:src="@drawable/ic_baseline_home_24" />
     <TextView
         android:id="@+id/textView5_1"
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/textView5_4"
+        android:id="@+id/currentWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -57,13 +57,13 @@
         android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/textView5_5"
+        android:id="@+id/prefixPlayer"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_below="@id/textView5_4"
+        android:layout_below="@id/currentWord"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:layout_toLeftOf="@id/editText1"
+        android:layout_toLeftOf="@id/playerWord"
         android:background="#D3D1D1"
         android:focusable="true"
         android:paddingLeft="10dp"
@@ -75,10 +75,10 @@
         android:textSize="25dp" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/playerWord"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_below="@id/textView5_4"
+        android:layout_below="@id/currentWord"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/cardview_light_background"
@@ -91,11 +91,12 @@
 
 
     <Button
-        android:id="@+id/button5_1"
+        android:id="@+id/btnCheck"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="320dp"
+        android:onClick="BtnCheckClick"
         android:text="Enter"
         android:textSize="20dp" />
 </RelativeLayout>
