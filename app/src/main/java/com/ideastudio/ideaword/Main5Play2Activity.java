@@ -36,6 +36,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Main5Play2Activity extends AppCompatActivity {
+    private static final String baseURL = "https://vdict.com";
+
     ImageButton imageButton;
     private RemoteDict remoteDict;
 
@@ -75,7 +77,7 @@ public class Main5Play2Activity extends AppCompatActivity {
                 .create();
         //important
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://vdict.com/")
+                .baseUrl(baseURL)
                 .addConverterFactory(ScalarsConverterFactory.create()) //important
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -89,8 +91,7 @@ public class Main5Play2Activity extends AppCompatActivity {
                             "trẻ trâu")
             );
             Random generator = new Random();
-            int randomIndex = generator.nextInt(listWord.size());
-
+            int randomIndex = generator.nextInt(listWord.size() - 1);
 
             String randomWord = listWord.get(randomIndex);
 
@@ -111,30 +112,45 @@ public class Main5Play2Activity extends AppCompatActivity {
         return dest;
     }
 
-    private void checkPlayerWord(String firstWord) {
+    private void checkPlayerWord(String firstWord, int type) {
         // tao mang gom cac tu co the tao
-        Call<String> call = remoteDict.getWords3(firstWord);
+        Log.d("toan", firstWord);
+        Call<String> call;
+        if (type == 3)
+            call= remoteDict.getWords3(firstWord);
+        else
+            call = remoteDict.getWords4(firstWord);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 if (response.isSuccessful()) {
                     String words = response.body();
-                    assert words != null;
-                    words = words.substring(9, words.length() - 2);
-                    Gson gson = new Gson();
-                    Dict wordsDict = gson.fromJson(words, Dict.class);
+                    availableWord.clear();
                     String secondWord = prefixPlayer.getText().toString();
                     secondWord = secondWord.toLowerCase(Locale.ROOT);
-                    availableWord.clear();
-                    for (String sugg : wordsDict.getSuggestions()) {
-                        // dem so cum tu co 2 tu
-                        String[] count = sugg.split("\\s+");
-                        if (count.length != 2) continue;
-                        // kiem tra co tu can tim ko
-                        if (!sugg.toLowerCase(Locale.ROOT).equals(currentWord.getText().toString().toLowerCase(Locale.ROOT)))
-                            availableWord.add(sugg);
 
+                    if (words.isEmpty()) {
+                        if (type == 3) {
+                            checkPlayerWord(firstWord, 4);
+                            return;
+                        }
                     }
+                    else
+                    {
+                        Log.d("toan", words);
+                        words = words.substring(9, words.length() - 2);
+                        Gson gson = new Gson();
+                        Dict wordsDict = gson.fromJson(words, Dict.class);
+                        for (String sugg : wordsDict.getSuggestions()) {
+                            // dem so cum tu co 2 tu
+                            String[] count = sugg.split("\\s+");
+                            if (count.length != 2) continue;
+                            // kiem tra co tu can tim ko
+                            if (!sugg.toLowerCase(Locale.ROOT).equals(currentWord.getText().toString().toLowerCase(Locale.ROOT)))
+                                availableWord.add(sugg);
+                        }
+                    }
+
                     if (availableWord.isEmpty()) {
                         Toast.makeText(Main5Play2Activity.this, "Ban da thua!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -142,13 +158,11 @@ public class Main5Play2Activity extends AppCompatActivity {
                         for (String word : availableWord)
                             if (word.equals(turnPlayerWord)) {
                                 Toast.makeText(Main5Play2Activity.this, "Tu cua ban hop le!", Toast.LENGTH_SHORT).show();
-                                //currentWord.setText(turnPlayerWord);
                                 currentPlayerWord = turnPlayerWord;
                                 computerGenerateWord(convertToUnsignedString(playerWord.getText().toString()));
                                 break;
                             }
                     }
-
 
 
                 }
@@ -191,11 +205,12 @@ public class Main5Play2Activity extends AppCompatActivity {
                 } else {
                     // tao ngau nhien trong mang sugg
                     Random generator = new Random();
-                    int randomIndex = generator.nextInt(availableWord.size());
+                    int randomIndex = generator.nextInt(availableWord.size() - 1);
                     String turnComputerWord = availableWord.get(randomIndex);
                     currentWord.setText(turnComputerWord);
                     String[] count = turnComputerWord.split("\\s+");
                     prefixPlayer.setText(count[1]);
+                    currentPlayerWord = "";
                     playerWord.setText("");
                 }
             }
@@ -212,7 +227,13 @@ public class Main5Play2Activity extends AppCompatActivity {
         //currentSuffWord = pcWord[1];
         //checkPlayerWord(convertToUnsignedString(currentSuffWord));
 
-        String checkWord = convertToUnsignedString(prefixPlayer.getText().toString() + " " + playerWord.getText().toString());
-        checkPlayerWord(checkWord);
+        if (prefixPlayer.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Khong duoc de trong", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String checkWord = convertToUnsignedString(prefixPlayer.getText().toString() + " " + playerWord.getText().toString());
+            checkPlayerWord(checkWord,3);
+        }
+
     }
 }
