@@ -99,4 +99,5 @@
         android:onClick="BtnCheckClick"
         android:text="Enter"
         android:textSize="20dp" />
+
 </RelativeLayout>

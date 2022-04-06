@@ -6,10 +6,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main4_play1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main5_play2.xml" value="0.15" />
-        <entry key="app/src/main/res/layout/activity_main6_uprank.xml" value="0.12708333333333333" />
-        <entry key="app/src/main/res/layout/activity_main7_timeup.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/layout/activity_main6_uprank.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main7_timeup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main8_options.xml" value="0.12708333333333333" />
-        <entry key="app/src/main/res/layout/activity_main9_how2play.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/layout/activity_main9_how2play.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_play.xml" value="0.22" />
       </map>
     </option>
