@@ -57,7 +57,7 @@ public class Main5Play2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main5_play2);
         imageButton=(ImageButton) findViewById(R.id.imagebutton);
         imageButton.setOnClickListener(view -> {
-            Intent i =new Intent(Main5Play2Activity.this,Main9How2playActivity.class);
+            Intent i =new Intent(Main5Play2Activity.this,Main2TrangchuActivity.class);
             startActivity(i);
         });
 
