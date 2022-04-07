@@ -28,7 +28,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:autofillHints="@string/prompt_email"
         android:hint="Tên truy cập*"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"

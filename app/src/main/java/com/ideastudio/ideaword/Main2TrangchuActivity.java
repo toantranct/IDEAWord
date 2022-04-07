@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Main2TrangchuActivity extends AppCompatActivity {
     Button button1,button2,button3,button4,button5;
+    TextView tv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,11 @@ public class Main2TrangchuActivity extends AppCompatActivity {
         button3=(Button)findViewById(R.id.button3);
         button4=(Button)findViewById(R.id.button4);
         button5=(Button)findViewById(R.id.button5);
+        tv1=(TextView)findViewById(R.id.textView);
+            Intent i=getIntent();
+            Bundle bundle =i.getExtras();
+            String a = bundle.getString("ten");
+            tv1.setText("Xin chào "+a);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

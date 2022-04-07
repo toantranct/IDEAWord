@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:tools = "http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height = "match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context = ".MainActivity"
+    tools:context=".MainActivity"
     android:background="#79D5FA">
 
 
@@ -38,21 +39,25 @@
         android:textSize="25dp"
         android:layout_marginTop = "106dp"/>
 
+
     <EditText
-        android:id="@+id/playerWord"
-        android:layout_width="250dp"
+        android:id="@+id/Edt"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp"
-        android:background="@color/cardview_light_background"
+        android:ems="10"
+        android:background="@drawable/vien"
         android:focusable="true"
         android:hint="Nhập tên của bạn"
         android:paddingLeft="30dp"
-        android:textColor="#736C73"
+        android:textColor="#A8A5A8"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#494649"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+
+        />
 
 
     <Button
