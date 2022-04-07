@@ -38,10 +38,13 @@ public class Main5Play2Activity extends AppCompatActivity {
     private EditText playerWord;
     private TextView prefixPlayer;
     private TextView countDownView;
+    private TextView roundView;
     private Utils utils;
     private CountDownTimer countDownTimer;
+    private boolean stateDialog = false;
     // thay doi theo De hoac kho
     private int level = 21;
+    private int currentRound = 1;
 
     private String currentPlayerWord = "";
     private boolean isStart = true;
@@ -67,6 +70,9 @@ public class Main5Play2Activity extends AppCompatActivity {
         }
     }
 
+    private void setRound(int round) {
+        roundView.setText(String.valueOf(round));
+    }
     private void initCountDown(int level) {
         if (countDownTimer == null)
             countDownTimer = new CountDownTimer(level * 1000, 1000) {
@@ -77,7 +83,8 @@ public class Main5Play2Activity extends AppCompatActivity {
 
                 public void onFinish() {
                     //countDownView.setText("done!");
-                    showAlertLose();
+                    if (stateDialog == false)
+                        showAlertLose();
                 }
             };
         countDownTimer.cancel();
@@ -91,6 +98,7 @@ public class Main5Play2Activity extends AppCompatActivity {
             playerWord = findViewById(R.id.playerWord);
             currentWord = findViewById(R.id.currentWord);
             prefixPlayer = findViewById(R.id.prefixPlayer);
+            roundView = findViewById(R.id.textView5_2);
             countDownView = findViewById(R.id.textView5_3);
             Bundle extras = getIntent().getExtras();
             level = extras.getInt("level");
@@ -112,8 +120,9 @@ public class Main5Play2Activity extends AppCompatActivity {
         currentWord.setText(randomWord);
         String[] count = randomWord.split("\\s+");
         prefixPlayer.setText(count[1]);
+        currentRound = 1;
         initCountDown(level);
-
+        setRound(currentRound++);
     }
 
     private String convertToUnsignedString(String word) {
@@ -157,6 +166,7 @@ public class Main5Play2Activity extends AppCompatActivity {
     private void computerGenerateWord(String firstWord) throws InterruptedException {
         Thread.sleep(300);
         initCountDown(level);
+        setRound(currentRound++);
         String firstWordStock = playerWord.getText().toString();
         firstWordStock = firstWordStock.toLowerCase(Locale.ROOT);
 
@@ -217,13 +227,15 @@ public class Main5Play2Activity extends AppCompatActivity {
         alert.setPositiveButton("Kệ tao, tiếp tục", (dialogInterface, i) -> {
             // Respond to positive button press
             try {
+                stateDialog = false;
                 computerGenerateWord(convertToUnsignedString(playerWord.getText().toString()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });
-
+        stateDialog = true;
         alert.show();
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -246,12 +258,13 @@ public class Main5Play2Activity extends AppCompatActivity {
             isStart = true;
             playerWord.setText("");
             try {
+                stateDialog = false;
                 initView();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
+        stateDialog = true;
         alert.show();
     }
 
@@ -274,12 +287,13 @@ public class Main5Play2Activity extends AppCompatActivity {
             isStart = true;
             playerWord.setText("");
             try {
+                stateDialog = false;
                 initView();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
+        stateDialog = true;
         alert.show();
     }
 }

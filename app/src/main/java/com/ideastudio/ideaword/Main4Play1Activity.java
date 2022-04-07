@@ -22,7 +22,7 @@ public class Main4Play1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(Main4Play1Activity.this,Main5Play2Activity.class);
-                i.putExtra("level", 16);
+                i.putExtra("level", 21);
                 startActivity(i);
             }
         });
@@ -30,7 +30,7 @@ public class Main4Play1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(Main4Play1Activity.this,Main5Play2Activity.class);
-                i.putExtra("level", 8);
+                i.putExtra("level", 11);
                 startActivity(i);
             }
         });
