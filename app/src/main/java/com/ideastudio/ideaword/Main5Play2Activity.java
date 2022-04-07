@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,24 +16,13 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.Normalizer;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ideastudio.ideaword.model.Dict;
-import com.ideastudio.ideaword.Utils;
 
 
 import java.util.ArrayList;
@@ -42,13 +32,16 @@ import java.util.Random;
 
 
 public class Main5Play2Activity extends AppCompatActivity {
-    private static final String filename = "com/ideastudio/ideaword/data/words.json";
     ImageButton imageButton;
 
     private TextView currentWord;
     private EditText playerWord;
     private TextView prefixPlayer;
+    private TextView countDownView;
     private Utils utils;
+    private CountDownTimer countDownTimer;
+    // thay doi theo De hoac kho
+    private int level = 21;
 
     private String currentPlayerWord = "";
     private boolean isStart = true;
@@ -74,31 +67,53 @@ public class Main5Play2Activity extends AppCompatActivity {
         }
     }
 
+    private void initCountDown(int level) {
+        if (countDownTimer == null)
+            countDownTimer = new CountDownTimer(level * 1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    countDownView.setText(String.valueOf(millisUntilFinished / 1000));
+                }
+
+                public void onFinish() {
+                    //countDownView.setText("done!");
+                    showAlertLose();
+                }
+            };
+        countDownTimer.cancel();
+        countDownTimer.start();
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void initView() throws IOException {
-        playerWord = findViewById(R.id.playerWord);
-        currentWord = findViewById(R.id.currentWord);
-        prefixPlayer = findViewById(R.id.prefixPlayer);
+        if (isStart) {
+            playerWord = findViewById(R.id.playerWord);
+            currentWord = findViewById(R.id.currentWord);
+            prefixPlayer = findViewById(R.id.prefixPlayer);
+            countDownView = findViewById(R.id.textView5_3);
+            Bundle extras = getIntent().getExtras();
+            level = extras.getInt("level");
+            isStart = false;
+        }
 
         Gson gson = new Gson();
 
         String jsonFileString = utils.getJsonFromAssets(getApplicationContext(), "words.json");
-        Type listUserType = new TypeToken<List<Dict>>() { }.getType();
+        Type listUserType = new TypeToken<List<Dict>>() {
+        }.getType();
         dicts = gson.fromJson(jsonFileString, listUserType);
-        if (isStart) {
-            // random word
+        // random word
 
-            Random generator = new Random();
-            int randomIndex = generator.nextInt(dicts.size() - 1);
+        Random generator = new Random();
+        int randomIndex = generator.nextInt(dicts.size() - 1);
 
-            String randomWord = dicts.get(randomIndex).getWord();
-            currentWord.setText(randomWord);
-            String[] count = randomWord.split("\\s+");
-            prefixPlayer.setText(count[1]);
+        String randomWord = dicts.get(randomIndex).getWord();
+        currentWord.setText(randomWord);
+        String[] count = randomWord.split("\\s+");
+        prefixPlayer.setText(count[1]);
+        initCountDown(level);
 
-            isStart = false;
-        }
     }
 
     private String convertToUnsignedString(String word) {
@@ -141,6 +156,7 @@ public class Main5Play2Activity extends AppCompatActivity {
 
     private void computerGenerateWord(String firstWord) throws InterruptedException {
         Thread.sleep(300);
+        initCountDown(level);
         String firstWordStock = playerWord.getText().toString();
         firstWordStock = firstWordStock.toLowerCase(Locale.ROOT);
 
