@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IDEAWord">
         <activity
+            android:name=".ThamgiaphongActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TaophongActivity"
+            android:exported="false" />
+        <activity
             android:name=".TrangchuonlineActivity"
             android:exported="false" />
         <activity
