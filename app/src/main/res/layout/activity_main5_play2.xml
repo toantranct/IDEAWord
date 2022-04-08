@@ -4,16 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height = "match_parent"
     android:orientation="vertical"
-    tools:context = ".MainActivity"
+    tools:context = ".Main5Play2Activity"
     android:background="#79D5FA">
 
-
+    <ImageButton
+        android:id="@+id/imagebutton1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
     <ImageButton
         android:id="@+id/imagebutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/ic_baseline_home_24"
-        android:src="@drawable/ic_baseline_home_24" />
+        android:src="@drawable/ic_baseline_home_24"
+        android:layout_alignParentRight="true"/>
 
     <TextView
         android:id="@+id/textView5_1"

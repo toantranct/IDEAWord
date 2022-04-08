@@ -32,7 +32,7 @@ import java.util.Random;
 
 
 public class Main5Play2Activity extends AppCompatActivity {
-    ImageButton imageButton;
+    ImageButton imageButton,imageButton1;
 
     private TextView currentWord;
     private EditText playerWord;
@@ -57,11 +57,15 @@ public class Main5Play2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5_play2);
         imageButton = (ImageButton) findViewById(R.id.imagebutton);
+        imageButton1 = (ImageButton) findViewById(R.id.imagebutton1);
         imageButton.setOnClickListener(view -> {
             Intent i = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
             startActivity(i);
         });
-
+        imageButton1.setOnClickListener(view -> {
+            Intent i = new Intent(Main5Play2Activity.this, Main4Play1Activity.class);
+            startActivity(i);
+        });
         try {
             initView();
         } catch (IOException e) {
