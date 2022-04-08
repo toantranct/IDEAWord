@@ -39,20 +39,22 @@
         android:layout_marginTop = "106dp"/>
 
     <EditText
-        android:id="@+id/playerWord"
+        android:id="@+id/Edt"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp"
-        android:background="@color/cardview_light_background"
+        android:background="@drawable/vien"
         android:focusable="true"
         android:hint="Nhập tên của bạn"
         android:paddingLeft="30dp"
         android:textColor="#736C73"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#494649"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:maxLines="1"
+        android:inputType="text"/>
 
 
     <Button

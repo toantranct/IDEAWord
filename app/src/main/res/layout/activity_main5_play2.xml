@@ -87,7 +87,9 @@
         android:textColor="#0E0E0E"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#494649"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:maxLines="1"
+        android:inputType="text"/>
 
 
     <Button
