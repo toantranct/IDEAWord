@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrangchuonlineActivity">
+    <RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+        xmlns:tools = "http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height = "match_parent"
+        android:orientation="vertical"
+        android:background="#79D5FA">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:text="Xin chào Taido! "
+            android:textColor="#0A0B0A"
+            android:textSize="30dp"
+            android:layout_marginTop = "26dp"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop = "66dp"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
+            android:text="Bắt đầu"
+            android:textSize="20dp" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="410dp"
+            android:text="Tạo phòng"
+            android:textSize="20dp" />
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:text="Thành tích"
+            android:id="@+id/button2"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:layout_marginTop = "470dp"
+            />
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:text="Tùy chọn"
+            android:id="@+id/button3"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:layout_marginTop = "530dp"
+            />
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:text="Cách chơi"
+            android:id="@+id/button4"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:layout_marginTop = "590dp"
+            />
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:text="Thông tin"
+            android:id="@+id/button5"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:layout_marginTop = "650dp"
+            />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_login.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_main2_trangchu.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_main7_timeup.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_main8_options.xml" value="0.22644927536231885" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_register.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/taido/Downloads/IDEAWord/app/src/main/res/layout/activity_trangchuonline.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main4_play1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main5_play2.xml" value="0.15" />
