@@ -17,11 +17,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.149" />
 
-    <TextView
-        android:id="@+id/textView8"
+    <EditText
+        android:id="@+id/edtRoomID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="________________"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.845"
@@ -64,7 +63,7 @@
         app:srcCompat="@drawable/back" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnJoinRoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"

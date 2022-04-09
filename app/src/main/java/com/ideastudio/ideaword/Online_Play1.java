@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -66,19 +67,24 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
     private void processCreateRoom() {
         progressDialog.setTitle("Đang tạo phòng mới");
         progressDialog.setMessage("Vui lòng chờ trong giây lát.");
-
-        rootDB.addValueEventListener(new ValueEventListener() {
+        progressDialog.show();
+        rootDB.child("users")
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 String userUid = mAuth.getCurrentUser().getUid();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     User user = data.getValue(User.class);
-                    if (user.getUid().equals(userUid)) {
+                    if (user.getUid() != null && user.getUid().equals(userUid)) {
+                        Log.d("toan", user.getUid());
                         String username = user.getUsername();
                         createRoom(username);
+                        return;
                     }
                 }
+                Toast.makeText(Online_Play1.this, "Tao phong khong thanh cong", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
 
             @Override
@@ -86,7 +92,6 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
     }
 
     private void createRoom(String username) {
@@ -96,14 +101,16 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
         userB = "";
         currentWord = "";
         currentTurn = username;
-        Room room = new Room(roomID, userA, userB, currentWord, currentTurn);
+        Room room = new Room(mAuth.getCurrentUser().getUid(), roomID, userA, userB, currentWord, currentTurn);
 
         rootDB.child("rooms")
                 .child(roomID)
                 .setValue(room);
+        progressDialog.dismiss();
+
         Intent intent = new Intent(this, TaophongActivity.class);
         intent.putExtra("roomID", username);
         startActivity(intent);
-        progressDialog.dismiss();
+
     }
 }

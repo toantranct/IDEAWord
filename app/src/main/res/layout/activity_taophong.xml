@@ -32,9 +32,9 @@
         android:focusable="true"
         android:gravity="center"
         android:hint="ID phòng"
-        android:text="232232"
         android:inputType="text"
         android:maxLines="1"
+        android:text="232232"
         android:textColor="#171617"
         android:textSize="25dp" />
 
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:text="Đang chờ dối thủ"
+        android:text="Đang chờ đối thủ"
         android:textColor="#0A0B0A"
         android:textSize="35dp" />
 
