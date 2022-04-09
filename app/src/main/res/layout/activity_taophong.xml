@@ -35,15 +35,15 @@
         android:maxLines="1"
         android:inputType="text"
         android:gravity="center"/>
+
     <Button
+        android:id="@+id/btncopy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="copy"
-        android:id="@+id/btncopy"
         android:layout_marginLeft="310dp"
-        android:textSize="12dp"
         android:layout_marginTop="136dp"
-        />
+        android:text="copy"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -69,8 +69,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
         android:text="Toantran"
         android:textColor="#0A0B0A"
         android:textSize="35dp" />

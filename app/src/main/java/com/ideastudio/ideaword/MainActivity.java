@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle=new Bundle();
                 bundle.putString("ten",a);
                 i.putExtras(bundle);
-                startActivity(i);
+                //startActivity(i);
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
     }
