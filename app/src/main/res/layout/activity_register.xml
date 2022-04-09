@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
     <Button
-        android:id="@+id/login4"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="20dp"
         android:width="150dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Quay lại"
         android:textColor="#0A0B0A"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,13 +27,13 @@
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="108dp"
         android:hint="Tên truy cập*"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,13 +83,13 @@
         app:layout_constraintTop_toBottomOf="@+id/password2" />
 
     <EditText
-        android:id="@+id/password4"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Email"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,14 +98,14 @@
         app:layout_constraintTop_toBottomOf="@+id/password2" />
 
     <Button
-        android:id="@+id/login2"
+        android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
         android:width="150dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Đăng ký ngay"
         android:textColor="#0A0B0A"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintVertical_bias="0.782" />
 
     <TextView
         android:id="@+id/textView2"

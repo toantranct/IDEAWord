@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ThamgiaphongActivity extends AppCompatActivity {
+public class Online_ThamGiaPhong extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phongcho);
+        setContentView(R.layout.activity_online_tham_gia_phong);
     }
 }
+

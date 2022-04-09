@@ -39,52 +39,59 @@
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="350dp"
-            android:text="Bắt đầu"
-            android:textSize="20dp" />
+            android:text="Chơi với máy"
+            android:onClick="onClick"
+            android:textSize="15dp" />
+
         <Button
             android:id="@+id/button"
             android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="410dp"
-            android:text="Tạo phòng"
-            android:textSize="20dp" />
+            android:onClick="onClick"
+            android:text="Chơi với bạn"
+            android:textSize="15dp" />
+
         <Button
-            android:layout_width="170dp"
-            android:layout_height="60dp"
-            android:text="Thành tích"
             android:id="@+id/button2"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:layout_marginTop = "470dp"
-            />
-        <Button
             android:layout_width="170dp"
             android:layout_height="60dp"
-            android:text="Tùy chọn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="470dp"
+            android:onClick="onClick"
+            android:text="Thành tích"
+            android:textSize="20dp" />
+
+        <Button
             android:id="@+id/button3"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:layout_marginTop = "530dp"
-            />
-        <Button
             android:layout_width="170dp"
             android:layout_height="60dp"
-            android:text="Cách chơi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="530dp"
+            android:onClick="onClick"
+            android:text="Tùy chọn"
+            android:textSize="20dp" />
+
+        <Button
             android:id="@+id/button4"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:layout_marginTop = "590dp"
-            />
-        <Button
             android:layout_width="170dp"
             android:layout_height="60dp"
-            android:text="Thông tin"
-            android:id="@+id/button5"
             android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:layout_marginTop = "650dp"
-            />
+            android:layout_marginTop="590dp"
+            android:onClick="onClick"
+            android:text="Cách chơi"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="650dp"
+            android:onClick="onClick"
+            android:text="Đăng xuất"
+            android:textSize="20dp" />
 
 
     </RelativeLayout>

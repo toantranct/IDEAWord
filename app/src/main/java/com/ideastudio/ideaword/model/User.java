@@ -1,15 +1,24 @@
 package com.ideastudio.ideaword.model;
 
 public class User {
-    private String username, password, email;
+    private String uid, username, password, email;
 
     public User() {
     }
 
-    public User(String username, String password, String email) {
+    public User(String uid, String username, String password, String email) {
+        this.uid = uid;
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {
