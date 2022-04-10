@@ -21,10 +21,13 @@ public class Main2TrangchuActivity extends AppCompatActivity {
         button4=(Button)findViewById(R.id.button4);
         button5=(Button)findViewById(R.id.button5);
         tv1=(TextView)findViewById(R.id.textView);
-        Intent i=getIntent();
+        /*Intent i=getIntent();
         Bundle bundle =i.getExtras();
         String a = bundle.getString("ten");
         tv1.setText("Xin chào "+a);
+
+         */
+        tv1.setText("Xin chào "+AppUtil.mname);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

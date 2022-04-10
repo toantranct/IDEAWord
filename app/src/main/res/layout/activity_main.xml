@@ -48,13 +48,14 @@
         android:background="@drawable/vien"
         android:focusable="true"
         android:hint="Nhập tên của bạn"
-        android:paddingLeft="30dp"
+        android:paddingLeft="0dp"
         android:textColor="#736C73"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#494649"
         android:textSize="25dp"
         android:maxLines="1"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:gravity="center"/>
 
 
     <Button

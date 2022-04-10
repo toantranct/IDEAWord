@@ -20,11 +20,22 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String a = String.format(edt1.getText().toString());
+               /* String a = String.format(edt1.getText().toString());
                 Intent i =new Intent(MainActivity.this,Main2TrangchuActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("ten",a);
                 i.putExtras(bundle);
+                startActivity(i);
+
+                */
+                nextActivity();
+            }
+
+            private void nextActivity() {
+                String strname = edt1.getText().toString().trim();
+                AppUtil.mname = strname;
+
+                Intent i =new Intent(MainActivity.this,Main2TrangchuActivity.class);
                 startActivity(i);
             }
         });

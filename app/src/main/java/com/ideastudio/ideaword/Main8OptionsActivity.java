@@ -3,6 +3,7 @@ package com.ideastudio.ideaword;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,32 @@ public class Main8OptionsActivity extends AppCompatActivity {
         });
         mediaPlayer = MediaPlayer.create(Main8OptionsActivity.this,R.raw.song);
         switch1=(Switch) findViewById(R.id.switch1);
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SharedPreferences sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
+        switch1.setChecked(sharedPreferences.getBoolean("value",true));
+
+        switch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(switch1.isChecked()){
+
+                    SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",true);
+                    editor.apply();
+                    switch1.setChecked(true);
+                    Toast.makeText(Main8OptionsActivity.this,"Đã bật nhạc",Toast.LENGTH_SHORT).show();
+                       mediaPlayer.start();
+                }else {
+                    if(mediaPlayer.isPlaying()){
+                        SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
+                        editor.putBoolean("value",false);
+                        editor.apply();
+                        switch1.setChecked(false);
+                        Toast.makeText(Main8OptionsActivity.this,"Đã tắt nhạc",Toast.LENGTH_SHORT).show();
+                        mediaPlayer.pause();}
+                }
+            }
+        });
+      /*  switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
@@ -43,5 +69,7 @@ public class Main8OptionsActivity extends AppCompatActivity {
 
             }
         });
+
+       */
     }
 }
