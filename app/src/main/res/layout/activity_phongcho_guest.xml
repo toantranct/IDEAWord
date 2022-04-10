@@ -5,8 +5,7 @@
     android:layout_height = "match_parent"
     android:orientation="vertical"
     android:background="#79D5FA"
-    tools:context=".TaophongActivity"
-    >
+    tools:context=".Online_PhongChoGuest">
     <ImageButton
         android:id="@+id/imagebutton1"
         android:layout_width="60dp"
@@ -21,34 +20,32 @@
         android:background="@drawable/ic_baseline_home_24"
         android:src="@drawable/ic_baseline_home_24"
         android:layout_alignParentRight="true"/>
-
     <TextView
-        android:id="@+id/tvRoomID"
+        android:id="@+id/textView1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp"
         android:background="@drawable/vien"
         android:focusable="true"
-        android:gravity="center"
         android:hint="ID phòng"
-        android:inputType="text"
-        android:maxLines="1"
-        android:text="232232"
         android:textColor="#171617"
-        android:textSize="25dp" />
-
+        android:textSize="25dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:gravity="center"/>
     <Button
-        android:id="@+id/btnCopy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="136dp"
         android:text="copy"
-        android:textSize="12dp" />
+        android:id="@+id/btncopy"
+        android:layout_marginLeft="310dp"
+        android:textSize="12dp"
+        android:layout_marginTop="136dp"
+        />
 
     <TextView
-        android:id="@+id/tvUserA"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
@@ -68,21 +65,21 @@
         android:textSize="40dp" />
 
     <TextView
-        android:id="@+id/tvUserB"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:text="Đang chờ đối thủ"
+        android:layout_below="@+id/textView3"
+        android:text="Toantran"
         android:textColor="#0A0B0A"
         android:textSize="35dp" />
 
     <Button
-        android:id="@+id/btnBatDau"
+        android:id="@+id/btnSanSang"
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="480dp"
-        android:text="Chiến thôi"
+        android:text="Sẵn sàng"
         android:textSize="20dp" />
 </RelativeLayout>

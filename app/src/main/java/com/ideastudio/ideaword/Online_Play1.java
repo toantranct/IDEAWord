@@ -96,19 +96,22 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
 
     private void createRoom(String username) {
         String roomID, userA, userB, currentWord, currentTurn;
+        String isStart, stateGuest;
         roomID = username;
         userA = username;
         userB = "";
         currentWord = "";
         currentTurn = username;
-        Room room = new Room(mAuth.getCurrentUser().getUid(), roomID, userA, userB, currentWord, currentTurn);
+        isStart = "false";
+        stateGuest = "false";
+        Room room = new Room(mAuth.getCurrentUser().getUid(), "", roomID, userA, userB, currentWord, currentTurn, isStart, stateGuest);
 
         rootDB.child("rooms")
                 .child(roomID)
                 .setValue(room);
         progressDialog.dismiss();
 
-        Intent intent = new Intent(this, TaophongActivity.class);
+        Intent intent = new Intent(this, Online_PhongCho.class);
         intent.putExtra("roomID", username);
         startActivity(intent);
 

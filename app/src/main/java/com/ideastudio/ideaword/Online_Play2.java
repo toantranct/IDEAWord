@@ -1,0 +1,295 @@
+package com.ideastudio.ideaword;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.ideastudio.ideaword.model.Dict;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+
+public class Online_Play2 extends AppCompatActivity {
+    ImageButton imageButton;
+
+    private TextView currentWord;
+    private EditText playerWord;
+    private TextView prefixPlayer;
+    private TextView countDownView;
+    private TextView roundView;
+    private TextView currentTurn;
+    private Utils utils;
+    private CountDownTimer countDownTimer;
+    private boolean stateDialog = false;
+    // thay doi theo De hoac kho
+    private int level = 21;
+    private int currentRound = 1;
+
+    private String currentPlayerWord = "";
+    private boolean isStart = true;
+    private List<Dict> dicts;
+    List<String> availableWord = new ArrayList<>();
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_online_play2);
+        imageButton = (ImageButton) findViewById(R.id.imagebutton);
+        imageButton.setOnClickListener(view -> {
+            Intent i = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
+            startActivity(i);
+        });
+
+        try {
+            initView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("toan", e.toString());
+        }
+    }
+
+    private void setRound(int round) {
+        roundView.setText(String.valueOf(round));
+    }
+    private void initCountDown(int level) {
+        if (countDownTimer == null)
+            countDownTimer = new CountDownTimer(level * 1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    countDownView.setText(String.valueOf(millisUntilFinished / 1000));
+                }
+
+                public void onFinish() {
+                    //countDownView.setText("done!");
+                    if (stateDialog == false)
+                        showAlertLose();
+                }
+            };
+        countDownTimer.cancel();
+        countDownTimer.start();
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void initView() throws IOException {
+        if (isStart) {
+            playerWord = findViewById(R.id.playerWord);
+            currentWord = findViewById(R.id.currentWord);
+            prefixPlayer = findViewById(R.id.prefixPlayer);
+            roundView = findViewById(R.id.textView5_2);
+            countDownView = findViewById(R.id.textView5_3);
+            currentTurn = findViewById(R.id.tvCurrentUser);
+            isStart = false;
+        }
+
+        Gson gson = new Gson();
+
+        String jsonFileString = utils.getJsonFromAssets(getApplicationContext(), "words.json");
+        Type listUserType = new TypeToken<List<Dict>>() {
+        }.getType();
+        dicts = gson.fromJson(jsonFileString, listUserType);
+        // random word
+
+        Random generator = new Random();
+        int randomIndex = generator.nextInt(dicts.size() - 1);
+
+        String randomWord = dicts.get(randomIndex).getWord();
+        currentWord.setText(randomWord);
+        String[] count = randomWord.split("\\s+");
+        prefixPlayer.setText(count[1]);
+        currentRound = 1;
+        initCountDown(level);
+        setRound(currentRound++);
+    }
+
+    private String convertToUnsignedString(String word) {
+        // chuyển về không dấu
+        // if word have "đ" use "đ".Normalize(NormalizationForm.FormD) -- use loop process
+        word = word.replaceAll("đ", "d");
+        String dest = Normalizer.normalize(word, Normalizer.Form.NFD);
+        dest = dest.replaceAll("[^\\p{ASCII}]", "");
+
+        return dest;
+    }
+
+    private void checkPlayerWord(String firstWord) {
+        // tao mang gom cac tu co the tao
+        availableWord.clear();
+
+        String firstWordStock = prefixPlayer.getText().toString();
+
+        if (dicts != null || !dicts.isEmpty()) {
+            for (Dict dict : dicts) {
+                // kiem tra co tu can tim ko
+                currentPlayerWord = firstWordStock + " " + playerWord.getText().toString();
+                if (dict.getWord().toLowerCase(Locale.ROOT).equals(currentPlayerWord.toLowerCase(Locale.ROOT))) {
+                    availableWord.add(dict.getWord());
+                    break;
+                }
+            }
+        }
+
+        if (availableWord.isEmpty()) {
+            showAlertLose();
+            //Toast.makeText(Main5Play2Activity.this, "Ban da thua!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(Online_Play2.this, "Tu cua ban hop le!", Toast.LENGTH_SHORT).show();
+            // tiep tuc
+            showAlertContinue();
+        }
+    }
+
+
+    private void computerGenerateWord(String firstWord) throws InterruptedException {
+        Thread.sleep(300);
+        initCountDown(level);
+        setRound(currentRound++);
+        String firstWordStock = playerWord.getText().toString();
+        firstWordStock = firstWordStock.toLowerCase(Locale.ROOT);
+
+        availableWord.clear();
+        for (Dict dict : dicts) {
+            // dem so cum tu co 2 tu
+            String[] count = dict.getWord().split("\\s+");
+            if (count.length != 2) continue;
+            // kiem tra co tu can tim ko
+            if (count[0].toLowerCase(Locale.ROOT).equals(firstWordStock) && !dict.getWord().toLowerCase(Locale.ROOT).equals(currentPlayerWord.toLowerCase(Locale.ROOT))) {
+                availableWord.add(dict.getWord());
+            }
+
+        }
+
+        if (availableWord.isEmpty()) {
+            showAlertWin();
+            //Toast.makeText(Main5Play2Activity.this, "Ban da thang!", Toast.LENGTH_SHORT).show();
+        } else {
+            // tao ngau nhien trong mang sugg
+            Random generator = new Random();
+            int randomIndex = generator.nextInt(availableWord.size() - 1);
+            String turnComputerWord = availableWord.get(randomIndex);
+            currentWord.setText(turnComputerWord);
+            String[] count = turnComputerWord.split("\\s+");
+            prefixPlayer.setText(count[1]);
+            currentPlayerWord = "";
+            playerWord.setText("");
+        }
+    }
+
+    public void BtnCheckClick(View view) {
+
+        if (playerWord.getText().toString().isEmpty()) {
+            Toast.makeText(Online_Play2.this, "Không được để trống!", Toast.LENGTH_SHORT).show();
+        } else {
+            String[] pcWord = currentWord.getText().toString().split(" ");
+            checkPlayerWord(convertToUnsignedString(pcWord[1]));
+            //  String checkWord = convertToUnsignedString(prefixPlayer.getText().toString() + " " + playerWord.getText().toString());
+            // checkPlayerWord(checkWord,3);
+        }
+
+    }
+
+    public void showAlertContinue() {
+        String title = "May cho mày đấy con ạ";
+        String supportText = "Khó thế cũng nghĩ ra được";
+        MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
+                .setTitle(title)
+                .setMessage(supportText)
+                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
+                    // Respond to neutral button press
+                    Intent intent = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
+                    startActivity(intent);
+                });
+
+
+        alert.setPositiveButton("Kệ tao, tiếp tục", (dialogInterface, i) -> {
+            // Respond to positive button press
+            try {
+                stateDialog = false;
+                computerGenerateWord(convertToUnsignedString(playerWord.getText().toString()));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        stateDialog = true;
+        alert.show();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    public void showAlertWin() {
+        String title = "OKOK =)) Từ này khó quá!";
+        String supportText = "Chú mày là nhất.Ngon thì làm ván nữa.";
+        MaterialAlertDialogBuilder alert;
+        alert = new MaterialAlertDialogBuilder(this)
+                .setTitle(title)
+                .setMessage(supportText)
+                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
+                    // Respond to neutral button press
+                    Intent intent = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
+                    startActivity(intent);
+                });
+
+
+        alert.setPositiveButton("OK bay. Lại", (dialogInterface, i) -> {
+            // Respond to positive button press
+            isStart = true;
+            playerWord.setText("");
+            try {
+                stateDialog = false;
+                initView();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        stateDialog = true;
+        alert.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    public void showAlertLose() {
+        String title = "Chết mịa mày con ơi";
+        String supportText = "Dễ thế mà không nghĩ ra được";
+        MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
+                .setTitle(title)
+                .setMessage(supportText)
+                .setNeutralButton("Trang chủ", (dialogInterface, i) -> {
+                    // Respond to neutral button press
+                    Intent intent = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
+                    startActivity(intent);
+                });
+
+
+        alert.setPositiveButton("Chơi lại", (dialogInterface, i) -> {
+            // Respond to positive button press
+            isStart = true;
+            playerWord.setText("");
+            try {
+                stateDialog = false;
+                initView();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        stateDialog = true;
+        alert.show();
+    }
+}

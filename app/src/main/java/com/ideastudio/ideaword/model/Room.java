@@ -1,18 +1,46 @@
 package com.ideastudio.ideaword.model;
 
 public class Room {
-    String uidHost, roomID, userA, userB, currentWord, currentTurn;
+    String uidHost, uidGuest, roomID, userA, userB, currentWord, currentTurn;
+    String isStart, stateGuest;
 
     public Room() {
     }
 
-    public Room(String uidHost, String roomID, String userA, String userB, String currentWord, String currentTurn) {
+    public Room(String uidHost, String uidGuest, String roomID, String userA, String userB, String currentWord, String currentTurn, String isStart, String stateGuest) {
         this.uidHost = uidHost;
+        this.uidGuest = uidGuest;
         this.roomID = roomID;
         this.userA = userA;
         this.userB = userB;
         this.currentWord = currentWord;
         this.currentTurn = currentTurn;
+        this.isStart = isStart;
+        this.stateGuest = stateGuest;
+    }
+
+    public String getIsStart() {
+        return isStart;
+    }
+
+    public void setIsStart(String isStart) {
+        this.isStart = isStart;
+    }
+
+    public String getStateGuest() {
+        return stateGuest;
+    }
+
+    public void setStateGuest(String stateGuest) {
+        this.stateGuest = stateGuest;
+    }
+
+    public String getUidGuest() {
+        return uidGuest;
+    }
+
+    public void setUidGuest(String uidGuest) {
+        this.uidGuest = uidGuest;
     }
 
     public String getUidHost() {

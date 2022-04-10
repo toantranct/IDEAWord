@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main10_aboutus.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main2_trangchu.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main3_myrank.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main4_play1.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main5_play2.xml" value="0.1734375" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main7_timeup.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main8_options.xml" value="0.26927083333333335" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main9_how2play.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_online_play.xml" value="0.1734375" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_online_play1.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_online_play2.xml" value="0.25" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_online_tham_gia_phong.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_phongcho.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_register.xml" value="0.3625" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_taophong.xml" value="0.3625" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_thamgiaphong.xml" value="0.3625" />
+        <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_trangchuonline.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main4_play1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main5_play2.xml" value="0.15" />
@@ -10,10 +29,7 @@
         <entry key="app/src/main/res/layout/activity_main7_timeup.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_main8_options.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_main9_how2play.xml" value="0.12708333333333333" />
-        <entry key="app/src/main/res/layout/activity_online_tham_gia_phong.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_phongcho.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_play.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_taophong.xml" value="0.19375" />
       </map>
     </option>
   </component>

@@ -14,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IDEAWord">
         <activity
+            android:name=".Online_Play2"
+            android:exported="false" />
+        <activity
             android:name=".Online_ThamGiaPhong"
             android:exported="false" />
         <activity
             android:name=".Online_Play1"
             android:exported="false" />
         <activity
-            android:name=".ThamgiaphongActivity"
+            android:name=".Online_PhongChoGuest"
             android:exported="false" />
         <activity
-            android:name=".TaophongActivity"
+            android:name=".Online_PhongCho"
             android:exported="false" />
         <activity
             android:name=".TrangchuonlineActivity"

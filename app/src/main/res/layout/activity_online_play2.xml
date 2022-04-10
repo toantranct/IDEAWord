@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#79D5FA"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/imagebutton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_baseline_home_24"
+        android:src="@drawable/ic_baseline_home_24" />
+
+    <TextView
+        android:id="@+id/tvRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Vòng "
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/tvCurrentUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:text="current User"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/tvRound"
+        android:text="1"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="0:30"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/currentWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:text="Cậu ấm"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/prefixPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/currentWord"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_toLeftOf="@id/playerWord"
+        android:background="#D3D1D1"
+        android:focusable="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="ấm"
+        android:textColor="#0A0B0A"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#494649"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/playerWord"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/currentWord"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/cardview_light_background"
+        android:focusable="true"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingLeft="10dp"
+        android:textColor="#0E0E0E"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#494649"
+        android:textSize="25dp" />
+
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:onClick="BtnCheckClick"
+        android:text="Enter"
+        android:textSize="20dp" />
+</RelativeLayout>

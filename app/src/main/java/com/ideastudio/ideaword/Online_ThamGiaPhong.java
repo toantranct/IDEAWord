@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ideastudio.ideaword.model.Room;
+import com.ideastudio.ideaword.model.User;
 
 public class Online_ThamGiaPhong extends AppCompatActivity {
     private Button btnJoinRoom;
@@ -25,6 +26,8 @@ public class Online_ThamGiaPhong extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     private DatabaseReference rootDB;
+
+    private String username;
     private String roomID;
 
     @Override
@@ -48,13 +51,33 @@ public class Online_ThamGiaPhong extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 roomID = edtRoomID.getText().toString();
-                processJoinRoom();
+                getUserName();
             }
         });
     }
 
-    private void processJoinRoom() {
-        Log.d("toan", "test");
+
+    private void getUserName() {
+        rootDB.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    User user = data.getValue(User.class);
+                    if (user.getUid().equals(mAuth.getUid())) {
+                        username = user.getUsername();
+                        processJoinRoom(username);
+                        return;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void processJoinRoom(String username) {
         rootDB.child("rooms")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -62,11 +85,11 @@ public class Online_ThamGiaPhong extends AppCompatActivity {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             Room room = data.getValue(Room.class);
                             if (room.getRoomID().equals(roomID)) {
-                                Room updateRoom = new Room(room.getUidHost(), roomID, room.getUserA(), mAuth.getCurrentUser().getUid(), room.getCurrentWord(), room.getCurrentTurn());
+                                Room updateRoom = new Room(room.getUidHost(), mAuth.getUid(), roomID, room.getUserA(), username, room.getCurrentWord(), room.getCurrentTurn(), room.getIsStart(), room.getStateGuest());
                                 rootDB.child("rooms")
                                         .child(roomID)
                                         .setValue(updateRoom);
-                                startActivity(new Intent(Online_ThamGiaPhong.this, ThamgiaphongActivity.class));
+                                startActivity(new Intent(Online_ThamGiaPhong.this, Online_PhongCho.class));
                                 return;
                             }
                         }

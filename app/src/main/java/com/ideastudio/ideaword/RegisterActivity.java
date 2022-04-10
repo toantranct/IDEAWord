@@ -86,7 +86,6 @@ public class RegisterActivity extends AppCompatActivity {
         email = edtEmail.getText().toString();
 
         if (isValid(username, password, repass, email)) {
-            Log.d("toan", "validted");
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
