@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main7TimeupActivity">
+    tools:context=".Main7TimeupActivity"
+    android:background="#8DE9FA">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

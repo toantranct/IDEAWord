@@ -5,7 +5,7 @@
     android:layout_height = "match_parent"
     android:orientation="vertical"
     tools:context = ".Main3MyrankActivity"
-    android:background="#79D5FA">
+    android:background="#8DE9FA">
 
 
     <TextView
