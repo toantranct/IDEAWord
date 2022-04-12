@@ -216,19 +216,19 @@ public class Main5Play2Activity extends AppCompatActivity {
     }
 
     public void showAlertContinue() {
-        String title = "May cho mày đấy con ạ";
+        String title = "Đúng rồi bạn ơi";
         String supportText = "Khó thế cũng nghĩ ra được";
         MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
                 .setTitle(title)
                 .setMessage(supportText)
-                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
+                .setNeutralButton("Trang chủ", (dialogInterface, i) -> {
                     // Respond to neutral button press
                     Intent intent = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
                     startActivity(intent);
                 });
 
 
-        alert.setPositiveButton("Kệ tao, tiếp tục", (dialogInterface, i) -> {
+        alert.setPositiveButton("Tiếp tục", (dialogInterface, i) -> {
             // Respond to positive button press
             try {
                 stateDialog = false;
@@ -274,7 +274,7 @@ public class Main5Play2Activity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     public void showAlertLose() {
-        String title = "Chết mịa mày con ơi";
+        String title = "Tiếc quá thua rồi";
         String supportText = "Dễ thế mà không nghĩ ra được";
         MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
                 .setTitle(title)

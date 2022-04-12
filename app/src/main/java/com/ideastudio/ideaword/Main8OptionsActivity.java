@@ -45,6 +45,13 @@ public class Main8OptionsActivity extends AppCompatActivity {
                     switch1.setChecked(true);
                     Toast.makeText(Main8OptionsActivity.this,"Đã bật nhạc",Toast.LENGTH_SHORT).show();
                        mediaPlayer.start();
+                       mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                           @Override
+                           public void onCompletion(MediaPlayer mediaPlayer) {
+                               mediaPlayer.start();
+
+                           }
+                       });
                 }else {
                     if(mediaPlayer.isPlaying()){
                         SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
