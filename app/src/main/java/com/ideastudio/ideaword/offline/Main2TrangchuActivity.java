@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ideastudio.ideaword.AppUtil;
 import com.ideastudio.ideaword.R;
 
 public class Main2TrangchuActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class Main2TrangchuActivity extends AppCompatActivity {
 //        Bundle bundle =i.getExtras();
 //        String a = bundle.getString("ten");
 //        if (a == null) a = "";
-        tv1.setText("Xin chào");
+        tv1.setText("Xin chào "+ AppUtil.mname);
 //        tv1.setText("Xin chào "+ a);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
