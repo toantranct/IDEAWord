@@ -153,7 +153,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (view.getId() == btnOffline.getId()) {
             //choi offline
             Intent intent = new Intent(this, TrangchuonlineActivity.class);
-            intent.putExtra("ten", "An danh");
             startActivity(intent);
 
         }

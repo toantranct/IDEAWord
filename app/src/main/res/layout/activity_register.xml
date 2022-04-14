@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:hint="Tên truy cập*"
+        android:hint="Tên tài khoản"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:selectAllOnFocus="true"
@@ -73,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Email"
+        android:hint="Email*"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="340dp"
-        android:text="bạn cần sử dụng email này trong trường hợp cần đặt lại mật khẩu"
+        android:text="(*) Các trường có dấu sao là bắt buộc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
