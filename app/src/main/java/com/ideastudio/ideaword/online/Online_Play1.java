@@ -127,6 +127,7 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
         Map<String, Object> roomInfo = new HashMap<>();
         String word = "";
         String turn = username;
+        String winer = "";
         ready.put(username, false);
 
         playerIDs.put("player1ID", mAuth.getUid());
@@ -135,7 +136,7 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
         roomInfo.put("roomID", username);
         roomInfo.put("playerIDs", playerIDs);
 //         public RoomV2(Map<String, Boolean> ready, Map<String, String> playerIDs, Map<String, Object> roomInfo, String word, String turn)
-        RoomV2 room = new RoomV2(ready, roomInfo, word, turn, null);
+        RoomV2 room = new RoomV2(ready, roomInfo, word, turn, winer);
         Map<String, Object> map = room.toMap();
         rootDB.child("rooms").child(username).setValue(map);
         progressDialog.dismiss();
@@ -145,6 +146,13 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("mPlayerID", mAuth.getUid());
         intent.putExtra("mPlayerUser", username);
         startActivity(intent);
+
+    }
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        startActivity(new Intent(this, TrangchuonlineActivity.class));
+        finish();
 
     }
 }

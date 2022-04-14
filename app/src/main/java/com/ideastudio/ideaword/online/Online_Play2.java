@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -47,7 +49,7 @@ import java.util.Random;
 
 public class Online_Play2 extends AppCompatActivity {
     ImageButton imageButton;
-
+    private static int c = 1;
     private Button btnCheck;
     private TextView currentWord;
     private EditText playerWord;
@@ -92,16 +94,21 @@ public class Online_Play2 extends AppCompatActivity {
         }.getType();
         dicts = gson.fromJson(jsonFileString, listUserType);
 
-
         rootDB.child("rooms")
                 .child(mRoomID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         RoomV2 room = snapshot.getValue(RoomV2.class);
-                        String winer = room.getWiner();
-                        if (winer != null && winer != "")
-                            showAlertLose();
+                        String winUser = room.getWinUser();
+                        if (!winUser.equals("")) {
+                            Log.d("Test", "update win " + mRoomID);
+                            if (stateDialog == false) {
+                                showAlertLose(winUser);
+                            }
+
+                        }
+
                     }
 
                     @Override
@@ -114,7 +121,7 @@ public class Online_Play2 extends AppCompatActivity {
             initView();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.d("toan", e.toString());
+            Log.d("ERROR", e.toString());
         }
     }
 
@@ -122,7 +129,7 @@ public class Online_Play2 extends AppCompatActivity {
         roundView.setText(String.valueOf(round));
     }
 
-    private void initCountDown(int level) {
+    private void initCountDown(int level, String player1, String player2) {
         if (countDownTimer == null)
             countDownTimer = new CountDownTimer(level * 1000, 1000) {
 
@@ -132,8 +139,14 @@ public class Online_Play2 extends AppCompatActivity {
 
                 public void onFinish() {
                     //countDownView.setText("done!");
-                    if (stateDialog == false)
-                        showAlertLose();
+                    if (stateDialog == false) {
+                        String winUser;
+                        winUser = player1;
+                        if (winUser.equals(currentTurn.getText().toString()))
+                            winUser = player2;
+                        showAlertLose(winUser);
+                    }
+
                 }
             };
         countDownTimer.cancel();
@@ -152,14 +165,17 @@ public class Online_Play2 extends AppCompatActivity {
             currentTurn = findViewById(R.id.tvCurrentUser);
             btnCheck = findViewById(R.id.btnCheck);
             imageButton = (ImageButton) findViewById(R.id.imagebutton);
+
+            roundView.setText("");
             imageButton.setOnClickListener(view -> {
-                Intent i = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
+                Intent i = new Intent(Online_Play2.this, TrangchuonlineActivity.class);
                 startActivity(i);
                 finish();
             });
-
+         //   currentRound = 1;
             isStart = false;
         }
+        //setRound(currentRound);
         if (isPlayer1()) genWord();
         getWord();
     }
@@ -172,11 +188,6 @@ public class Online_Play2 extends AppCompatActivity {
 
         String randomWord = dicts.get(randomIndex).getWord();
         currentWord.setText(randomWord);
-//        String[] count = randomWord.split("\\s+");
-//        prefixPlayer.setText(count[1]);
-//        currentRound = 1;
-//        initCountDown(level);
-//        setRound(currentRound++);
 
         // update word
         rootDB.child("rooms").child(mRoomID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -189,7 +200,6 @@ public class Online_Play2 extends AppCompatActivity {
                     rootDB.child("rooms")
                             .child(mRoomID)
                             .setValue(room.toMap());
-//                    currentTurn.setText(room.getPlayer1User());
                 } else {
                     Toast.makeText(Online_Play2.this, "Có lỗi xảy ra vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
                     finish();
@@ -213,9 +223,9 @@ public class Online_Play2 extends AppCompatActivity {
                 currentTurn.setText(turn);
                 prefixPlayer.setText(count[1]);
                 playerWord.setText("");
-                currentRound = 1;
-                initCountDown(level);
-                setRound(currentRound++);
+
+                initCountDown(level, room.getPlayer1User(), room.getPlayer2User());
+
                 if (mPlayerUser.equals(room.getTurn()))
                     btnCheck.setVisibility(View.VISIBLE);
                 else
@@ -269,11 +279,14 @@ public class Online_Play2 extends AppCompatActivity {
         if (availableWord.isEmpty()) {
             // Win
             updateWinner();
+            Log.d("IDEA_CHECKWINER_LOG", mPlayerID);
         } else {
             Toast.makeText(Online_Play2.this, "Tu cua ban hop le!", Toast.LENGTH_SHORT).show();
             // tiep tuc
+
             swapTurn(currentPlayerWord);
         }
+
     }
 
     private void updateWinner() {
@@ -285,13 +298,12 @@ public class Online_Play2 extends AppCompatActivity {
                     String winUser = currentTurn.getText().toString();
                     Map<String, Boolean> ready = room.getReady();
                     for (String player : ready.keySet()) {
-                        if (!winUser.equals(player))
-                        {
+                        if (!winUser.equals(player)) {
                             winUser = player;
                             break;
                         }
                     }
-                    room.setWiner(winUser);
+                    room.setWinUser(winUser);
                     rootDB.child("rooms")
                             .child(mRoomID)
                             .setValue(room.toMap());
@@ -320,10 +332,6 @@ public class Online_Play2 extends AppCompatActivity {
                             .child(mRoomID)
                             .setValue(room.toMap());
 
-//                    currentWord.setText(currentPlayerWord);
-//                    String[] count = currentWord.getText().toString().split("\\s+");
-//                    prefixPlayer.setText(count[1]);
-//                    playerWord.setText("");
                 }
 
 
@@ -339,82 +347,79 @@ public class Online_Play2 extends AppCompatActivity {
         } else {
             String[] pcWord = currentWord.getText().toString().split(" ");
             checkPlayerWord(convertToUnsignedString(pcWord[1]));
-            //  String checkWord = convertToUnsignedString(prefixPlayer.getText().toString() + " " + playerWord.getText().toString());
-            // checkPlayerWord(checkWord,3);
         }
 
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.R)
-    public void showAlertWin() {
-        String title = "OKOK =)) Từ này khó quá!";
-        String supportText = "Chú mày là nhất.Ngon thì làm ván nữa.";
-        MaterialAlertDialogBuilder alert;
-        alert = new MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                .setMessage(supportText)
-                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
-                    // Respond to neutral button press
-                    Intent intent = new Intent(Online_Play2.this, Main2TrangchuActivity.class);
-                    startActivity(intent);
-                });
-
-
-        alert.setPositiveButton("OK bay. Lại", (dialogInterface, i) -> {
-            // Respond to positive button press
-            isStart = true;
-            playerWord.setText("");
-            try {
-                stateDialog = false;
-                initView();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        stateDialog = true;
-        if (!((Activity) this).isFinishing()) {
-
-            alert.show();
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    public void showAlertLose() {
+    public void showAlertLose(String winUser) {
         String title;
-        String loseUser = currentTurn.getText().toString();
-        if (loseUser.equals(mPlayerUser))
+        if (!winUser.equals(mPlayerUser))
             title = "Bạn đã thua";
         else
             title = "Chúc mừng bạn đã thắng";
 
-        //String supportText = "Dễ thế mà không nghĩ ra được";
-        MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                //      .setMessage(supportText)
-                .setNeutralButton("Trang chủ", (dialogInterface, i) -> {
-                    // Respond to neutral button press
-                    Intent intent = new Intent(Online_Play2.this, TrangchuonlineActivity.class);
-                    startActivity(intent);
-                });
-
-
-        alert.setPositiveButton("Chơi lại", (dialogInterface, i) -> {
-            // Respond to positive button press
-            rePlayGame();
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Trò chơi kết thúc!");
+        alert.setMessage(title);
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                Intent intent = new Intent(Online_Play2.this, TrangchuonlineActivity.class);
+                startActivity(intent);
+                //leaveRoom();
+                finish();
+            }
         });
-        stateDialog = true;
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Chơi lại", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                rePlayGame();
+            }
+        });
         if (!((Activity) this).isFinishing()) {
+            stateDialog = true;
             alert.show();
         }
+
     }
+
+    public void showAlertRoomNotExist() {
+        String title;
+        title = "Chủ phòng đã thoát";
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Thoát khỏi phòng");
+        alert.setMessage(title);
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                Intent intent = new Intent(Online_Play2.this, TrangchuonlineActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Tạo phòng mới", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                startActivity(new Intent(Online_Play2.this, Online_Play1.class));
+                finish();
+            }
+        });
+        if (!((Activity) this).isFinishing()) {
+            stateDialog = true;
+            alert.show();
+        }
+
+    }
+
     public void rePlayGame() {
-//        Intent intent = new Intent(this, Online_PhongCho.class);
-//        intent.putExtra("mRoomID", username);
-//        intent.putExtra("mPlayerID", mAuth.getUid());
-//        intent.putExtra("mPlayerUser", mPlayerUser);
-//        startActivity(intent);
-//        finish();
         rootDB.child("rooms")
                 .child(mRoomID)
                 .get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -427,6 +432,7 @@ public class Online_Play2 extends AppCompatActivity {
                         ready.replace(key, false);
                     }
                     room.setReady(ready);
+                    room.setWinUser("");
                     rootDB.child("rooms")
                             .child(mRoomID)
                             .setValue(room.toMap());
@@ -437,17 +443,69 @@ public class Online_Play2 extends AppCompatActivity {
                     intent.putExtra("mPlayerUser", mPlayerUser);
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
                     Toast.makeText(Online_Play2.this, "Có lỗi xảy ra, vui lòng thử lại sau.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+    public void showAlertConfirmLeaveRoom() {
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Thoát khỏi phòng");
+        alert.setMessage("Bạn có chắc chắn muốn thoát phòng?");
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Thoát", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                startActivity(new Intent(Online_Play2.this, Online_Play1.class));
+                finish();
+            }
+        });
+        if (!((Activity) this).isFinishing()) {
+            stateDialog = true;
+            alert.show();
+        }
+    }
+
     @Override
     public void onBackPressed() {
         Log.d("IDEA", "onBackPressed Called");
-        moveTaskToBack(true);
+        showAlertConfirmLeaveRoom();
     }
+    private void deleteRoom() {
+        rootDB.child("rooms").child(mRoomID).removeValue();
+    }
+    private void leaveRoom() {
+        rootDB.child("rooms")
+                .child(mRoomID)
+                .get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    RoomV2 room = task.getResult().getValue(RoomV2.class);
+                    Map<String, Boolean> ready = new HashMap<>();
+                    Map<String, String> playerIDs = new HashMap<>();
+                    Map<String, Object> roomInfo = new HashMap<>();
+                    String word = "";
+                    String turn = mRoomID;
+                    String winUser = "";
+                    ready.put(mRoomID, false);
 
+                    playerIDs.put("player1ID", mAuth.getUid());
+                    playerIDs.put("player1User", mRoomID);
+
+                    roomInfo.put("roomID", mRoomID);
+                    roomInfo.put("playerIDs", playerIDs);
+                    RoomV2 newRoom = new RoomV2(ready, roomInfo, word, turn, winUser);
+                    Map<String, Object> map = newRoom.toMap();
+                    rootDB.child("rooms").child(mRoomID).setValue(map);
+                }
+                else {
+                    Toast.makeText(Online_Play2.this, "Đã xảy ra lỗi : " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

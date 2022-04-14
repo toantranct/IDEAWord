@@ -10,26 +10,26 @@ public class RoomV2 {
     Map<String, Object> roomInfo = new HashMap<>();
     String word;
     String turn;
-    String winer;
+    String winUser;
 
 
     public RoomV2() {
     }
 
-    public RoomV2(Map<String, Boolean> ready, Map<String, Object> roomInfo, String word, String turn, String winer) {
+    public RoomV2(Map<String, Boolean> ready, Map<String, Object> roomInfo, String word, String turn, String winUser) {
         this.ready = ready;
         this.roomInfo = roomInfo;
         this.word = word;
         this.turn = turn;
-        this.winer = winer;
+        this.winUser = winUser;
     }
 
-    public String getWiner() {
-        return winer;
+    public String getWinUser() {
+        return winUser;
     }
 
-    public void setWiner(String winer) {
-        this.winer = winer;
+    public void setWinUser(String winUser) {
+        this.winUser = winUser;
     }
 
     public Map<String, Boolean> getReady() {
@@ -50,7 +50,7 @@ public class RoomV2 {
     }
 
     public String getWord() {
-        return word != "" ? word : null;
+        return !word.equals("") ? word : "";
     }
 
     public void setWord(String word) {
@@ -99,6 +99,7 @@ public class RoomV2 {
         rs.put("ready", ready);
         rs.put("word", word);
         rs.put("turn", turn);
+        rs.put("winUser", winUser);
 
         return rs;
     }

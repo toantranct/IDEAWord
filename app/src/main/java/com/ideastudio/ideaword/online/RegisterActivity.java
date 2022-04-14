@@ -130,4 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
         Toast.makeText(this, mess, Toast.LENGTH_SHORT).show();
         return false;
     }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
 }

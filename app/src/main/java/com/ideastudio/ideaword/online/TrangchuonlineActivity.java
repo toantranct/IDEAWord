@@ -67,4 +67,13 @@ public class TrangchuonlineActivity extends AppCompatActivity implements View.On
             startActivity(new Intent(TrangchuonlineActivity.this, LoginActivity.class));
         }
     }
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+        finish();
+    }
 }

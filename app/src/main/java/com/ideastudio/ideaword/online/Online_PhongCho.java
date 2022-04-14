@@ -189,7 +189,7 @@ public class Online_PhongCho extends AppCompatActivity {
 
                             }
                         } else {
-                            Toast.makeText(Online_PhongCho.this, "Có lỗi khi sẵn sàng, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Online_PhongCho.this, "Có lỗi khi bắt đầu, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -205,6 +205,7 @@ public class Online_PhongCho extends AppCompatActivity {
         intent.putExtra("mPlayerID", mAuth.getUid());
         intent.putExtra("mPlayerUser", mPlayerUser);
         startActivity(intent);
+        finish();
     }
 
     private void resetHandler() {
@@ -222,5 +223,13 @@ public class Online_PhongCho extends AppCompatActivity {
                 });
 
     }
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        //
+        startActivity(new Intent(this, Online_Play1.class));
+        finish();
+    }
+
 }
 
