@@ -200,7 +200,7 @@ ImageButton imageButton1,imageButton2;
 
                             }
                         } else {
-                            Toast.makeText(Online_PhongCho.this, "Có lỗi khi sẵn sàng, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Online_PhongCho.this, "Có lỗi khi bắt đầu, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -216,6 +216,7 @@ ImageButton imageButton1,imageButton2;
         intent.putExtra("mPlayerID", mAuth.getUid());
         intent.putExtra("mPlayerUser", mPlayerUser);
         startActivity(intent);
+        finish();
     }
 
     private void resetHandler() {
@@ -233,5 +234,13 @@ ImageButton imageButton1,imageButton2;
                 });
 
     }
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        //
+        startActivity(new Intent(this, Online_Play1.class));
+        finish();
+    }
+
 }
 

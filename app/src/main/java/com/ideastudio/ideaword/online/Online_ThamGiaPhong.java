@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,8 +64,7 @@ ImageButton imageButton1,imageButton2;
                             return;
                         }
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(Online_ThamGiaPhong.this, "Đã có lỗi xảy ra, thử lại sau", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -95,6 +95,7 @@ ImageButton imageButton1,imageButton2;
 
         return (T) value;
     }
+
     private void processJoinRoom() {
         rootDB.child("rooms").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -118,21 +119,28 @@ ImageButton imageButton1,imageButton2;
                             rootDB.child("rooms")
                                     .child(roomID)
                                     .setValue(updateRoom.toMap());
-                            Intent intent =new Intent(Online_ThamGiaPhong.this, Online_PhongCho.class);
+                            Intent intent = new Intent(Online_ThamGiaPhong.this, Online_PhongCho.class);
                             intent.putExtra("mRoomID", roomID);
-                            intent.putExtra("mPlayerID", mAuth.getUid());
+                            intent.putExtra("mPlayerID", uid);
                             intent.putExtra("mPlayerUser", username);
                             startActivity(intent);
+                            finish();
                             return;
                         }
                     }
                     Toast.makeText(Online_ThamGiaPhong.this, "ID không tồn tại", Toast.LENGTH_SHORT).show();
-                } else
-                {
+                } else {
                     Toast.makeText(Online_ThamGiaPhong.this, "Có lỗi vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        startActivity(new Intent(this, Online_Play1.class));
+        finish();
     }
 }
 

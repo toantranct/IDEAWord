@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ideastudio.ideaword.R;
 import com.ideastudio.ideaword.model.User;
 import com.ideastudio.ideaword.offline.Main2TrangchuActivity;
+import com.ideastudio.ideaword.offline.MainActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -155,5 +157,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("IDEA", "onBackPressed Called");
+        //
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
