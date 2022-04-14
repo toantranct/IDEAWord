@@ -303,8 +303,10 @@ public class Main5Play2Activity extends AppCompatActivity {
         alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                stateDialog = false;
-                alert.dismiss();
+               // stateDialog = false;
+               // alert.dismiss();
+                 Intent ii = new Intent(Main5Play2Activity.this, TrangchuonlineActivity.class);
+                startActivity(ii);
             }
         });
         alert.setButton(AlertDialog.BUTTON_POSITIVE, "Chơi lại", new DialogInterface.OnClickListener() {
