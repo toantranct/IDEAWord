@@ -26,8 +26,8 @@ public class TrangchuonlineActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trangchuonline);
-        tv1=(TextView)findViewById(R.id.textView);
-        tv1.setText("Xin chào "+ AppUtil.mname);
+        tv1 = (TextView) findViewById(R.id.textView);
+        tv1.setText("Xin chào " + AppUtil.mname);
         mAuth = FirebaseAuth.getInstance();
 
         InitView();
@@ -48,28 +48,28 @@ public class TrangchuonlineActivity extends AppCompatActivity implements View.On
         if (view.getId() == btnBot.getId()) {
             // choi voi may
             startActivity(new Intent(this, Main4Play1Activity.class));
-        }
-        else if (view.getId() == btnFriend.getId()) {
+        } else if (view.getId() == btnFriend.getId()) {
             //choi voi ban
-            startActivity(new Intent(this, Online_Play1.class));
+            if (mAuth.getUid() == null)
+                startActivity(new Intent(this, LoginActivity.class));
+            else
+                startActivity(new Intent(this, Online_Play1.class));
         } else if (view.getId() == btnRank.getId()) {
             //rank
             startActivity(new Intent(this, Main3MyrankActivity.class));
-        }
-        else if (view.getId() == btnOption.getId()) {
+        } else if (view.getId() == btnOption.getId()) {
             //cai dat
             startActivity(new Intent(this, Main8OptionsActivity.class));
-        }
-        else if (view.getId() == btnHelp.getId()) {
+        } else if (view.getId() == btnHelp.getId()) {
             // huong dan
             startActivity(new Intent(this, Main9How2playActivity.class));
-        }
-        else if (view.getId() == btnSignOut.getId()) {
+        } else if (view.getId() == btnSignOut.getId()) {
             Log.d("toan", "1");
             mAuth.signOut();
             startActivity(new Intent(TrangchuonlineActivity.this, LoginActivity.class));
         }
     }
+
     @Override
     public void onBackPressed() {
         Log.d("IDEA", "onBackPressed Called");
