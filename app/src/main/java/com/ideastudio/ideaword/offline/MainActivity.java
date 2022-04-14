@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.ideastudio.ideaword.AppUtil;
 import com.ideastudio.ideaword.R;
 import com.ideastudio.ideaword.online.LoginActivity;
 
@@ -30,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
 //                bundle.putString("ten",a);
 //                i.putExtras(bundle);
 //                //startActivity(i);
+                nextActivity();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+
+            private void nextActivity() {
+                String strname = edt1.getText().toString().trim();
+                AppUtil.mname = strname;
             }
         });
     }

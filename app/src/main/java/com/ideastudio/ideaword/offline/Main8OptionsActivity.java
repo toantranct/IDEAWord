@@ -13,6 +13,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.online.TrangchuonlineActivity;
 
 public class Main8OptionsActivity extends AppCompatActivity {
     Button button1;
@@ -26,7 +27,7 @@ public class Main8OptionsActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main8OptionsActivity.this, Main2TrangchuActivity.class);
+                Intent i =new Intent(Main8OptionsActivity.this, TrangchuonlineActivity.class);
                 startActivity(i);
             }
         });

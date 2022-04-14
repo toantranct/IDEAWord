@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.online.TrangchuonlineActivity;
 
 public class Main4Play1Activity extends AppCompatActivity {
     Button button1,button2;
@@ -39,9 +40,9 @@ public class Main4Play1Activity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    finish();
-//                Intent i =new Intent(Main4Play1Activity.this, Main2TrangchuActivity.class);
-//                startActivity(i);
+                 //   finish();
+                Intent i =new Intent(Main4Play1Activity.this, TrangchuonlineActivity.class);
+               startActivity(i);
             }
         });
     }

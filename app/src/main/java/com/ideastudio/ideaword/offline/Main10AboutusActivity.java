@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.online.TrangchuonlineActivity;
 
 public class Main10AboutusActivity extends AppCompatActivity {
     Button button1;
@@ -19,7 +20,7 @@ public class Main10AboutusActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main10AboutusActivity.this, Main2TrangchuActivity.class);
+                Intent i =new Intent(Main10AboutusActivity.this, TrangchuonlineActivity.class);
                 startActivity(i);
             }
         });

@@ -28,6 +28,7 @@ import com.google.gson.reflect.TypeToken;
 import com.ideastudio.ideaword.R;
 import com.ideastudio.ideaword.model.Dict;
 import com.ideastudio.ideaword.model.Utils;
+import com.ideastudio.ideaword.online.TrangchuonlineActivity;
 
 
 import java.util.ArrayList;
@@ -352,7 +353,7 @@ public class Main5Play2Activity extends AppCompatActivity {
     }
 
     public void backToHome() {
-        Intent i = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
+        Intent i = new Intent(Main5Play2Activity.this, TrangchuonlineActivity.class);
         startActivity(i);
     }
 

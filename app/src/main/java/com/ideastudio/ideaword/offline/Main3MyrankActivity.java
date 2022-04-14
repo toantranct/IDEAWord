@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.online.TrangchuonlineActivity;
 
 public class Main3MyrankActivity extends AppCompatActivity {
     Button button1,button2;
@@ -20,7 +21,7 @@ public class Main3MyrankActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main3MyrankActivity.this, Main2TrangchuActivity.class);
+                Intent i =new Intent(Main3MyrankActivity.this, TrangchuonlineActivity.class);
                 startActivity(i);
             }
         });
