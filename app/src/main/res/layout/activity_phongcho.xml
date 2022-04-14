@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:tools = "http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height = "match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="#79D5FA"
-    tools:context=".Online_PhongCho"
-    >
+    android:orientation="vertical"
+    tools:context=".online.Online_PhongCho">
+
     <ImageButton
         android:id="@+id/imagebutton1"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/ic_baseline_arrow_back_24"
         android:background="@drawable/ic_baseline_arrow_back_24"
+        android:src="@drawable/ic_baseline_arrow_back_24"
         tools:ignore="ContentDescription" />
+
     <ImageButton
         android:id="@+id/imagebutton2"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_alignParentRight="true"
         android:background="@drawable/ic_baseline_home_24"
-        android:src="@drawable/ic_baseline_home_24"
-        android:layout_alignParentRight="true"/>
+        android:src="@drawable/ic_baseline_home_24" />
 
     <TextView
         android:id="@+id/tvRoomID"
@@ -56,14 +57,15 @@
         android:text="Taido"
         android:textColor="#0A0B0A"
         android:textSize="35dp" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
-        android:text="VS"
         android:layout_marginRight="20dp"
+        android:text="VS"
         android:textColor="#0A0B0A"
         android:textSize="40dp" />
 
@@ -86,6 +88,7 @@
         android:enabled="false"
         android:text="Chiến thôi"
         android:textSize="20dp" />
+
     <Button
         android:id="@+id/btnSanSang"
         android:layout_width="170dp"
@@ -93,6 +96,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="480dp"
         android:text="Sẵn sàng"
-        android:visibility="invisible"
-        android:textSize="20dp" />
+        android:textSize="16dp"
+        android:visibility="invisible" />
 </RelativeLayout>

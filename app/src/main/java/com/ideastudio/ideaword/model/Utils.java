@@ -1,11 +1,11 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.model;
 
 import android.content.Context;
 import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 public class Utils {
-    static String getJsonFromAssets(Context context, String fileName) {
+    public static String getJsonFromAssets(Context context, String fileName) {
         String jsonString;
         try {
             InputStream is = context.getAssets().open(fileName);

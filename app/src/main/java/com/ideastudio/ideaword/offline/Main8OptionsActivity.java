@@ -1,4 +1,4 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.offline;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.ideastudio.ideaword.R;
 
 public class Main8OptionsActivity extends AppCompatActivity {
     Button button1;
@@ -24,7 +25,7 @@ public class Main8OptionsActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main8OptionsActivity.this,Main2TrangchuActivity.class);
+                Intent i =new Intent(Main8OptionsActivity.this, Main2TrangchuActivity.class);
                 startActivity(i);
             }
         });

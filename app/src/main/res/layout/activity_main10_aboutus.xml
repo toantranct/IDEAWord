@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main10AboutusActivity">
+    tools:context=".offline.Main10AboutusActivity">
     <FrameLayout
         android:layout_width="407dp"
         android:layout_height="28dp"

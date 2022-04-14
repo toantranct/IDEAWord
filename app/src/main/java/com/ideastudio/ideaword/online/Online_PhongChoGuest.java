@@ -1,8 +1,10 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.online;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.ideastudio.ideaword.R;
 
 public class Online_PhongChoGuest extends AppCompatActivity {
 

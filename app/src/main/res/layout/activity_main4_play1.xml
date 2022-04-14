@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height = "match_parent"
     android:orientation="vertical"
-    tools:context = ".MainActivity"
+    tools:context = ".offline.MainActivity"
     android:background="#79D5FA">
 
 
     <ImageButton
+        android:id="@+id/imagebutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/imagebutton"
-        android:src="@drawable/ic_baseline_home_24"
-        android:background="@drawable/ic_baseline_home_24"/>
+        android:background="@drawable/ic_baseline_home_24"
+        android:src="@drawable/ic_baseline_home_24" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

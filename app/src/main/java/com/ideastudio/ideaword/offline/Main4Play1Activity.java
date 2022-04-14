@@ -1,4 +1,4 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.offline;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,35 +8,40 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class Main6UprankActivity extends AppCompatActivity {
+import com.ideastudio.ideaword.R;
+
+public class Main4Play1Activity extends AppCompatActivity {
     Button button1,button2;
     ImageButton imageButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main6_uprank);
-        button1=(Button)findViewById(R.id.button6_1);
-        button2=(Button)findViewById(R.id.button6_2);
+        setContentView(R.layout.activity_main4_play1);
+        button1=(Button)findViewById(R.id.button4_1);
+        button2=(Button)findViewById(R.id.button4_2);
         imageButton=(ImageButton) findViewById(R.id.imagebutton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main6UprankActivity.this,Main4Play1Activity.class);
+                Intent i =new Intent(Main4Play1Activity.this, Main5Play2Activity.class);
+                i.putExtra("level", 21);
                 startActivity(i);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main6UprankActivity.this,Main2TrangchuActivity.class);
+                Intent i =new Intent(Main4Play1Activity.this,Main5Play2Activity.class);
+                i.putExtra("level", 11);
                 startActivity(i);
             }
         });
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main6UprankActivity.this,Main2TrangchuActivity.class);
-                startActivity(i);
+                    finish();
+//                Intent i =new Intent(Main4Play1Activity.this, Main2TrangchuActivity.class);
+//                startActivity(i);
             }
         });
     }

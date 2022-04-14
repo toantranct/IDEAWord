@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height = "match_parent"
     android:orientation="vertical"
-    tools:context = ".MainActivity"
+    tools:context = ".offline.MainActivity"
     android:background="#79D5FA">
 
 
@@ -14,7 +14,46 @@
         android:layout_height="60dp"
         android:background="@drawable/ic_baseline_home_24"
         android:src="@drawable/ic_baseline_home_24" />
+    <TextView
+        android:id="@+id/tvRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Vòng "
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
 
+    <TextView
+        android:id="@+id/tvCurrentUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:text="current User"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/tvRound"
+        android:text="1"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="0:30"
+        android:textColor="#0A0B0A"
+        android:textSize="30dp" />
     <TextView
         android:id="@+id/textView5_1"
         android:layout_width="wrap_content"
@@ -25,26 +64,7 @@
         android:textColor="#0A0B0A"
         android:textSize="30dp" />
 
-    <TextView
-        android:id="@+id/textView5_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_toRightOf="@id/textView5_1"
-        android:text="1"
-        android:textColor="#0A0B0A"
-        android:textSize="30dp" />
 
-    <TextView
-        android:id="@+id/textView5_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:text="0:30"
-        android:textColor="#0A0B0A"
-        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/currentWord"

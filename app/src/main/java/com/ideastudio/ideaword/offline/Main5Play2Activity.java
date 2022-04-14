@@ -1,8 +1,11 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.offline;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +25,9 @@ import java.text.Normalizer;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.ideastudio.ideaword.R;
 import com.ideastudio.ideaword.model.Dict;
+import com.ideastudio.ideaword.model.Utils;
 
 
 import java.util.ArrayList;
@@ -39,6 +44,7 @@ public class Main5Play2Activity extends AppCompatActivity {
     private TextView prefixPlayer;
     private TextView countDownView;
     private TextView roundView;
+    private TextView tvCurrentUser;
     private Utils utils;
     private CountDownTimer countDownTimer;
     private boolean stateDialog = false;
@@ -58,8 +64,10 @@ public class Main5Play2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main5_play2);
         imageButton = (ImageButton) findViewById(R.id.imagebutton);
         imageButton.setOnClickListener(view -> {
-            Intent i = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
-            startActivity(i);
+            showAlertConfirmBack();
+//            finish();
+            //  Intent i = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
+            //startActivity(i);
         });
 
         try {
@@ -73,6 +81,7 @@ public class Main5Play2Activity extends AppCompatActivity {
     private void setRound(int round) {
         roundView.setText(String.valueOf(round));
     }
+
     private void initCountDown(int level) {
         if (countDownTimer == null)
             countDownTimer = new CountDownTimer(level * 1000, 1000) {
@@ -100,6 +109,7 @@ public class Main5Play2Activity extends AppCompatActivity {
             prefixPlayer = findViewById(R.id.prefixPlayer);
             roundView = findViewById(R.id.textView5_2);
             countDownView = findViewById(R.id.textView5_3);
+            tvCurrentUser = findViewById(R.id.tvCurrentUser);
             Bundle extras = getIntent().getExtras();
             level = extras.getInt("level");
             isStart = false;
@@ -135,7 +145,7 @@ public class Main5Play2Activity extends AppCompatActivity {
         return dest;
     }
 
-    private void checkPlayerWord(String firstWord) {
+    private void checkPlayerWord(String firstWord)  {
         // tao mang gom cac tu co the tao
         availableWord.clear();
 
@@ -164,9 +174,9 @@ public class Main5Play2Activity extends AppCompatActivity {
 
 
     private void computerGenerateWord(String firstWord) throws InterruptedException {
-        Thread.sleep(300);
-        initCountDown(level);
-        setRound(currentRound++);
+        tvCurrentUser.setText("Bot đang nghĩ");
+        Thread.sleep(500);
+
         String firstWordStock = playerWord.getText().toString();
         firstWordStock = firstWordStock.toLowerCase(Locale.ROOT);
 
@@ -195,6 +205,9 @@ public class Main5Play2Activity extends AppCompatActivity {
             prefixPlayer.setText(count[1]);
             currentPlayerWord = "";
             playerWord.setText("");
+            initCountDown(level);
+            setRound(currentRound++);
+            tvCurrentUser.setText("Đến lượt bạn");
         }
     }
 
@@ -212,88 +225,142 @@ public class Main5Play2Activity extends AppCompatActivity {
     }
 
     public void showAlertContinue() {
-        String title = "May cho mày đấy con ạ";
-        String supportText = "Khó thế cũng nghĩ ra được";
-        MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                .setMessage(supportText)
-                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
-                    // Respond to neutral button press
-                    Intent intent = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
-                    startActivity(intent);
-                });
+        try {
+            computerGenerateWord(convertToUnsignedString(playerWord.getText().toString()));
+        } catch (InterruptedException e) {
+            Log.d("IDEA_ERR", e.toString());
+        }
 
-
-        alert.setPositiveButton("Kệ tao, tiếp tục", (dialogInterface, i) -> {
-            // Respond to positive button press
-            try {
-                stateDialog = false;
-                computerGenerateWord(convertToUnsignedString(playerWord.getText().toString()));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        stateDialog = true;
-        alert.show();
-
+//        Nếu show dialog
+//        AlertDialog alert = new AlertDialog.Builder(this).create();
+//        alert.setTitle("Chúc mừng, bạn đã chiến thắng !");
+//        alert.setMessage("Bạn có muốn tiếp tục không?");
+//        alert.setCanceledOnTouchOutside(false);
+//        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                alert.dismiss();
+//            }
+//        });
+//        alert.setButton(AlertDialog.BUTTON_POSITIVE, "tiếp tục", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                isStart = true;
+//                playerWord.setText("");
+//                try {
+//                    stateDialog = false;
+//                    initView();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        stateDialog = true;
+//        if (!((Activity) this).isFinishing()) {
+//            alert.show();
+//        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     public void showAlertWin() {
-        String title = "OKOK =)) Từ này khó quá!";
-        String supportText = "Chú mày là nhất.Ngon thì làm ván nữa.";
-        MaterialAlertDialogBuilder alert;
-        alert = new MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                .setMessage(supportText)
-                .setNeutralButton("Dell chơi nữa", (dialogInterface, i) -> {
-                    // Respond to neutral button press
-                    Intent intent = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
-                    startActivity(intent);
-                });
-
-
-        alert.setPositiveButton("OK bay. Lại", (dialogInterface, i) -> {
-            // Respond to positive button press
-            isStart = true;
-            playerWord.setText("");
-            try {
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Chúc mừng, bạn đã chiến thắng !");
+        alert.setMessage("Bạn có muốn chơi tiếp không?");
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 stateDialog = false;
-                initView();
-            } catch (IOException e) {
-                e.printStackTrace();
+                alert.dismiss();
+            }
+        });
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Chơi lại", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                isStart = true;
+                playerWord.setText("");
+                try {
+                    stateDialog = false;
+                    initView();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         stateDialog = true;
-        alert.show();
+        if (!((Activity) this).isFinishing()) {
+            alert.show();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     public void showAlertLose() {
-        String title = "Chết mịa mày con ơi";
-        String supportText = "Dễ thế mà không nghĩ ra được";
-        MaterialAlertDialogBuilder alert = new MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                .setMessage(supportText)
-                .setNeutralButton("Trang chủ", (dialogInterface, i) -> {
-                    // Respond to neutral button press
-                    Intent intent = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
-                    startActivity(intent);
-                });
-
-
-        alert.setPositiveButton("Chơi lại", (dialogInterface, i) -> {
-            // Respond to positive button press
-            isStart = true;
-            playerWord.setText("");
-            try {
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Bạn đã thua !");
+        alert.setMessage("Bạn có muốn phục thù không?");
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Trang chủ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 stateDialog = false;
-                initView();
-            } catch (IOException e) {
-                e.printStackTrace();
+                alert.dismiss();
+            }
+        });
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Chơi lại", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                isStart = true;
+                playerWord.setText("");
+                try {
+                    stateDialog = false;
+                    initView();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         stateDialog = true;
-        alert.show();
+        if (!((Activity) this).isFinishing()) {
+            alert.show();
+        }
+
+    }
+
+    public void showAlertConfirmBack() {
+        AlertDialog alert = new AlertDialog.Builder(this).create();
+        alert.setTitle("Xác nhận");
+        alert.setMessage("Bạn có chắc chắn muốn thoát?");
+        alert.setCanceledOnTouchOutside(false);
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "Huỷ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                alert.dismiss();
+            }
+        });
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Thoát", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                stateDialog = false;
+                backToHome();
+            }
+        });
+        stateDialog = true;
+        if (!((Activity) this).isFinishing()) {
+            alert.show();
+        }
+    }
+
+    public void backToHome() {
+        Intent i = new Intent(Main5Play2Activity.this, Main2TrangchuActivity.class);
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // Do extra stuff here
+        finish();
     }
 }
+

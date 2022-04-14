@@ -14,58 +14,58 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IDEAWord">
         <activity
-            android:name=".Online_Play2"
+            android:name=".online.Online_Play2"
             android:exported="false" />
         <activity
-            android:name=".Online_ThamGiaPhong"
+            android:name=".online.Online_ThamGiaPhong"
             android:exported="false" />
         <activity
-            android:name=".Online_Play1"
+            android:name=".online.Online_Play1"
             android:exported="false" />
         <activity
-            android:name=".Online_PhongChoGuest"
+            android:name=".online.Online_PhongChoGuest"
             android:exported="false" />
         <activity
-            android:name=".Online_PhongCho"
+            android:name=".online.Online_PhongCho"
             android:exported="false" />
         <activity
-            android:name=".TrangchuonlineActivity"
+            android:name=".online.TrangchuonlineActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".online.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".online.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Main10AboutusActivity"
+            android:name=".offline.Main10AboutusActivity"
             android:exported="false" />
         <activity
-            android:name=".Main9How2playActivity"
+            android:name=".offline.Main9How2playActivity"
             android:exported="false" />
         <activity
-            android:name=".Main8OptionsActivity"
+            android:name=".offline.Main8OptionsActivity"
             android:exported="false" />
         <activity
-            android:name=".Main7TimeupActivity"
+            android:name=".offline.Main7TimeupActivity"
             android:exported="false" />
         <activity
-            android:name=".Main6UprankActivity"
+            android:name=".offline.Main6UprankActivity"
             android:exported="false" />
         <activity
-            android:name=".Main5Play2Activity"
+            android:name=".offline.Main5Play2Activity"
             android:exported="false" />
         <activity
-            android:name=".Main4Play1Activity"
+            android:name=".offline.Main4Play1Activity"
             android:exported="false" />
         <activity
-            android:name=".Main3MyrankActivity"
+            android:name=".offline.Main3MyrankActivity"
             android:exported="false" />
         <activity
-            android:name=".Main2TrangchuActivity"
+            android:name=".offline.Main2TrangchuActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".offline.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

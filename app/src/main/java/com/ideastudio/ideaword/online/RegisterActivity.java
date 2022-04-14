@@ -1,4 +1,4 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.online;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ideastudio.ideaword.R;
 import com.ideastudio.ideaword.model.User;
 
 import java.util.regex.Matcher;

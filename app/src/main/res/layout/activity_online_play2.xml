@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#79D5FA"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".offline.MainActivity">
 
 
     <ImageButton
@@ -72,11 +72,11 @@
         android:layout_height="40dp"
         android:layout_below="@id/currentWord"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:layout_toLeftOf="@id/playerWord"
         android:background="#D3D1D1"
         android:focusable="true"
-        android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="ấm"
         android:textColor="#0A0B0A"
@@ -86,7 +86,7 @@
 
     <EditText
         android:id="@+id/playerWord"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_below="@id/currentWord"
         android:layout_centerHorizontal="true"

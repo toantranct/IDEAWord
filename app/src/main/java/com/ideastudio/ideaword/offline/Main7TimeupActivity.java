@@ -1,4 +1,4 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.offline;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.ideastudio.ideaword.R;
 
 public class Main7TimeupActivity extends AppCompatActivity {
     Button button1,button2;
@@ -21,14 +23,14 @@ public class Main7TimeupActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main7TimeupActivity.this,Main4Play1Activity.class);
+                Intent i =new Intent(Main7TimeupActivity.this, Main4Play1Activity.class);
                 startActivity(i);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Main7TimeupActivity.this,Main2TrangchuActivity.class);
+                Intent i =new Intent(Main7TimeupActivity.this, Main2TrangchuActivity.class);
                 startActivity(i);
             }
         });

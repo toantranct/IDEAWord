@@ -1,13 +1,15 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.offline;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.online.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
@@ -22,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = String.format(edt1.getText().toString());
-                Intent i =new Intent(MainActivity.this,Main2TrangchuActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("ten",a);
-                i.putExtras(bundle);
-                //startActivity(i);
+//                Intent i =new Intent(MainActivity.this, Main2TrangchuActivity.class);
+//                if (a == null || a == "") a = "";
+//                Bundle bundle=new Bundle();
+//                bundle.putString("ten",a);
+//                i.putExtras(bundle);
+//                //startActivity(i);
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });

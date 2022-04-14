@@ -1,4 +1,4 @@
-package com.ideastudio.ideaword;
+package com.ideastudio.ideaword.online;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.ideastudio.ideaword.R;
+import com.ideastudio.ideaword.offline.Main3MyrankActivity;
+import com.ideastudio.ideaword.offline.Main4Play1Activity;
+import com.ideastudio.ideaword.offline.Main8OptionsActivity;
+import com.ideastudio.ideaword.offline.Main9How2playActivity;
 
 public class TrangchuonlineActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnSignOut, btnBot, btnFriend, btnRank, btnOption, btnHelp;
