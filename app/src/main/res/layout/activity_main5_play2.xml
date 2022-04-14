@@ -65,7 +65,6 @@
         android:textSize="30dp" />
 
 
-
     <TextView
         android:id="@+id/currentWord"
         android:layout_width="wrap_content"
@@ -103,13 +102,13 @@
         android:layout_marginTop="30dp"
         android:background="@color/cardview_light_background"
         android:focusable="true"
+        android:inputType="text"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:textColor="#0E0E0E"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#494649"
-        android:textSize="25dp"
-        android:maxLines="1"
-        android:inputType="text"/>
+        android:textSize="25dp" />
 
 
     <Button

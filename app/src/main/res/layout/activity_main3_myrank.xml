@@ -34,7 +34,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/imageViewbac"
-        android:src="@drawable/logo"
+        android:src="@drawable/silver"
         android:layout_centerHorizontal="true"
         android:layout_marginTop = "100dp"/>
     <TextView
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView1"
-        android:text="250 đ"
+        android:text="250 điểm"
         android:textColor="#0A0B0A"
         android:textSize="25dp"
         android:layout_marginTop = "2dp"/>

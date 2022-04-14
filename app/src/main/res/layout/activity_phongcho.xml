@@ -67,7 +67,7 @@
         android:layout_marginRight="20dp"
         android:text="VS"
         android:textColor="#0A0B0A"
-        android:textSize="40dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/tvUserB"

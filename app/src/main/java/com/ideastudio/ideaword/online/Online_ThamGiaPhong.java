@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,13 +32,21 @@ public class Online_ThamGiaPhong extends AppCompatActivity {
 
     private String username;
     private String roomID;
-
+ImageButton imageButton1,imageButton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_tham_gia_phong);
-
-
+        imageButton1=(ImageButton)findViewById(R.id.imagebutton1) ;
+        imageButton2=(ImageButton)findViewById(R.id.imagebutton2) ;
+        imageButton1.setOnClickListener(view -> {
+             Intent i = new Intent(Online_ThamGiaPhong.this, Online_Play1.class);
+            startActivity(i);
+        });
+        imageButton2.setOnClickListener(view -> {
+            Intent i = new Intent(Online_ThamGiaPhong.this,TrangchuonlineActivity.class);
+            startActivity(i);
+        });
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         rootDB = mDatabase.getReference();

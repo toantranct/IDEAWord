@@ -3,6 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_login.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main10_aboutus.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main2_trangchu.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main3_myrank.xml" value="0.10740740740740741" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main4_play1.xml" value="0.10740740740740741" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main5_play2.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main6_uprank.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main7_timeup.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main8_options.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_main9_how2play.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_online_play1.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_online_play2.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_online_tham_gia_phong.xml" value="0.176" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_phongcho.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_phongcho_guest.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/IDEAWord/app/src/main/res/layout/activity_trangchuonline.xml" value="0.15806159420289856" />
         <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/Toan Tran/Desktop/IDEAWord/app/src/main/res/layout/activity_main10_aboutus.xml" value="0.25729166666666664" />

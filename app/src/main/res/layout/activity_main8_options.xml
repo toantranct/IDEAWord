@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="80dp"
         android:width="110dp"
         android:text="Trang chủ"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,31 +56,17 @@
             android:id="@+id/switch2"
             android:layout_width="331dp"
             android:layout_height="match_parent"
-            android:text="Nhạc nền"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="411dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="340dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Switch
-            android:id="@+id/switch3"
-            android:layout_width="331dp"
-            android:layout_height="match_parent"
             android:text="Thông báo"
             android:textAlignment="center"
             android:textSize="24sp" />
     </FrameLayout>
 
+
+
     <FrameLayout
         android:layout_width="408dp"
         android:layout_height="137dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="350dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

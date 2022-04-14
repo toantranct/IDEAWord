@@ -57,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.password);
         edtRepass = findViewById(R.id.password2);
         edtEmail = findViewById(R.id.email);
-        checkBox = findViewById(R.id.checkBox);
         btnBack = findViewById(R.id.btnBack);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {

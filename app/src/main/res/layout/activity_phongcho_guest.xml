@@ -62,7 +62,7 @@
         android:text="VS"
         android:layout_marginRight="20dp"
         android:textColor="#0A0B0A"
-        android:textSize="40dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/textView4"

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +41,21 @@ public class Online_PhongCho extends AppCompatActivity {
 
     private List<Dict> dicts;
     private Utils utils;
-
+ImageButton imageButton1,imageButton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phongcho);
+        imageButton1=(ImageButton)findViewById(R.id.imagebutton1) ;
+        imageButton2=(ImageButton)findViewById(R.id.imagebutton2) ;
+        imageButton1.setOnClickListener(view -> {
+            Intent i = new Intent(Online_PhongCho.this, Online_Play1.class);
+            startActivity(i);
+        });
+        imageButton2.setOnClickListener(view -> {
+            Intent i = new Intent(Online_PhongCho.this,TrangchuonlineActivity.class);
+            startActivity(i);
+        });
         Intent intent = getIntent();
         mRoomID = intent.getStringExtra("mRoomID");
         mPlayerID = intent.getStringExtra("mPlayerID");

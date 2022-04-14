@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,11 +33,16 @@ public class Online_Play1 extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private DatabaseReference rootDB;
     private DatabaseReference roomsTable;
-
+ImageButton imageButton1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_play1);
+        imageButton1=(ImageButton)findViewById(R.id.imagebutton) ;
+        imageButton1.setOnClickListener(view -> {
+            Intent i = new Intent(Online_Play1.this, TrangchuonlineActivity.class);
+            startActivity(i);
+        });
 
         mAuth = FirebaseAuth.getInstance();
         rootDB = FirebaseDatabase.getInstance().getReference();
